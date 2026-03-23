@@ -3,9 +3,13 @@
 Professional workspace for University Lab assignments and Lecture scripts.
 
 ## 🚀 Setup
-This project uses **Poetry** for dependency management.
-1. Install dependencies: `poetry install`
-2. Activate environment: `poetry shell`
+This project uses **uv** for fast dependency management.
+1. Install uv: `pip install uv` or `winget install uv`
+2. Install dependencies: `uv pip install -r requirements.txt` or `uv sync`
+3. Activate environment (if using venv): `.venv\Scripts\Activate.ps1`
+
+## Install any package
+
 
 ## 📁 Structure
 - `src/`: Core mathematical algorithms (Bisection, Newton-Raphson, etc.)
@@ -36,3 +40,30 @@ Numerical-Method/
 - **NumPy** (Linear Algebra)
 - **SciPy** (Optimization/Integration)
 - **Matplotlib** (Visualization)
+
+
+1. **Install uv:**
+   ```powershell
+   pip install uv
+   ```
+
+2. **Create environment & install deps:**
+   ```powershell
+   uv venv .venv
+   .venv\Scripts\Activate.ps1
+   uv pip install -r requirements.txt
+   ```
+   
+   Or auto-sync from pyproject.toml:
+   ```powershell
+   uv sync
+   ```
+
+3. **Optional:** Delete poetry.lock (no longer needed) and create `uv.lock` (uv will generate it on first sync).
+
+4. **Run scripts:**
+   ```powershell
+   python src/numerical_methods/lec3-2.py
+   ```
+
+Made changes.
