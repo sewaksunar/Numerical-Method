@@ -12,6 +12,7 @@ This project uses **Poetry** for dependency management.
 - `notebooks/`: Visual analysis and Calculus exploration.
 - `data/`: Datasets for curve fitting and interpolation.
 - `docs/`: Lab manuals and lecture notes.
+```
 Numerical-Method/
 ├── .venv/               # Isolated environment (never touch files here)
 ├── .vscode/             # Editor-specific settings (linter, interpreter)
@@ -28,6 +29,7 @@ Numerical-Method/
 ├── poetry.lock          # Frozen library versions
 ├── pyproject.toml       # Project metadata and dependencies
 └── README.md            # The "Face" of the project (instructions)
+```
 
 ## 🛠 Tech Stack
 - **Python 3.14**

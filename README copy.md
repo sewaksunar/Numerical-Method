@@ -1,0 +1,14 @@
+<apply>
+    <int/>
+    <bvar>
+        <ci>x</ci>
+    </bvar>
+    <apply>
+        <root/>
+        <apply>
+            <power/>
+            <ci>x</ci>
+            <cn>-1</cn>
+        </apply>
+    </apply>
+</apply>/
