@@ -2,7 +2,22 @@
 
 Professional workspace for University Lab assignments and Lecture scripts.
 
-## 🚀 Setup
+## � Course Documentation
+
+All course notes with fully rendered LaTeX equations are published on GitHub Pages:
+
+**👉 [Read the Course Notes](https://YOUR-USERNAME.github.io/REPOSITORY-NAME/)**
+
+The documentation includes:
+- **Chapter 1:** Solution of Non-Linear Equations (Bisection, Newton-Raphson, Secant, Fixed Point)
+- **Chapter 2:** System of Linear Algebraic Equations (Gaussian elimination, Iterative methods, Eigenvalues)
+- **Chapter 3:** Interpolation (Lagrange, Newton's divided differences, Stirling & Bessel formulas)
+
+> 📝 To build documentation locally, see [docs/BUILD.md](docs/BUILD.md)
+
+---
+
+## �🚀 Setup
 This project uses **uv** for fast dependency management.
 1. Install uv: `pip install uv` or `winget install uv`
 2. Install dependencies: `uv pip install -r requirements.txt` or `uv sync`
