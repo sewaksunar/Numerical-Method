@@ -1,33 +1,60 @@
 # Numerical Methods Course
 
-Welcome to the **Numerical Methods Course Notes**. This site contains comprehensive course materials covering fundamental algorithms and techniques used in engineering computations.
+Welcome to the **Numerical Methods Course Notes**. This comprehensive resource covers fundamental numerical techniques used in engineering computations.
 
 ```{toctree}
 :maxdepth: 2
-:caption: Course Content
+:caption: 📚 Course Chapters
 
 ch1
 ch2
 ch3
 ```
 
-## Quick Navigation
+## 📋 Course Chapters
 
-- **[Chapter 1: Solution of Non-Linear Equations](ch1)** - Bisection, Newton-Raphson, Secant methods
-- **[Chapter 2: System of Linear Equations](ch2)** - Gaussian elimination, iterative methods, eigenvalues
-- **[Chapter 3: Interpolation](ch3)** - Lagrange, Newton's divided differences, Stirling's formulas
+### [**Chapter 1: Solution of Non-Linear Equations**](ch1)
+Find roots of functions using bracketing and open methods.
+- Errors and Accuracy in Numerical Computations
+- Bisection Method
+- Regula Falsi & Secant Methods
+- Newton-Raphson Method
+- Fixed-Point Iteration
+- Systems of Non-Linear Equations
 
-## About This Course
+### [**Chapter 2: System of Linear Equations**](ch2)
+Solve systems of linear algebraic equations using direct and iterative methods.
+- Gaussian Elimination & Pivoting
+- Gauss-Jordan Method
+- LU Decomposition
+- Jacobi & Gauss-Seidel Methods
+- Eigenvalues & Eigenvectors
+- Power Method
 
-This material covers numerical methods used to solve engineering problems where analytical solutions are difficult or impossible to obtain. All mathematical equations are rendered with full MathJax support.
+### [**Chapter 3: Interpolation**](ch3)
+Approximate functions using interpolation techniques and finite differences.
+- Finite Differences (Forward, Backward, Central)
+- Newton-Gregory Formulas
+- Stirling's & Bessel's Formulas
+- Lagrange Interpolation
+- Divided Differences
+- Error Analysis
 
-## Features
+## ✨ Key Features
 
-✓ **Full equation support** - LaTeX equations render perfectly  
-✓ **Interactive navigation** - Easy browsing between chapters  
-✓ **Mobile-friendly** - Works on all devices  
-✓ **Professionally styled** - Read the Docs theme  
+✓ **Full LaTeX Support** - All mathematical equations render perfectly  
+✓ **Comprehensive Coverage** - From basics to advanced techniques  
+✓ **Easy Navigation** - Browse between chapters with intuitive menus  
+✓ **Mobile-Friendly** - Works seamlessly on all devices  
+✓ **Professional Styling** - Read the Docs theme for clarity  
+
+## 🎯 How to Use This Course
+
+1. **Start with Chapter 1** if you're new to numerical methods
+2. **Use the sidebar** for quick access to all chapters
+3. **Follow links** to explore related concepts
+4. **Review equations** with full mathematical notation support
 
 ---
 
-*Last updated: April 2026*
+*Last updated: April 2026 | Hosted with ❤️ on GitHub Pages*

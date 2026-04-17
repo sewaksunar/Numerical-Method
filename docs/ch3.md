@@ -1,4 +1,11 @@
-### 3. Introduction
+# Chapter 3: Interpolation
+
+> **Navigation:** [← Chapter 2](ch2) | [Home](index)
+
+---
+
+## 3. Introduction
+
 For the given values of functin $f(x)$ at points $x_{0}, x_{1}, \cdots, x_{n}$ the precess of finding approximate values of the function $f(x)$ for new $x$'s between $x_{0}$ and $x_{n}$ is called interpolation.
 
 Consider the points $(x_{0}, f_{0}), (x_{1}, f_{1}), \cdots, (x_{n}, f_{n})$. We find a polynomial $p_n(x)$ of degree $n$ or less than assumes the values $p_n({x_0}) = f_{0},\quad p_n({x_1}) = f_{1} \quad, \cdots, \quad p_n({x_n}) = f_{n}$.
