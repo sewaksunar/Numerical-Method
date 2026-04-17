@@ -36,13 +36,14 @@ A **bracketing method** based on the Intermediate Value Theorem. If a continuous
     $$x_r = x_u - \frac{f(x_u)(x_l - x_u)}{f(x_l) - f(x_u)} \quad$$
 *   **Secant Method:** An **open method** that uses a similar formula but does **not require the root to be bracketed**. It uses two initial estimates and calculates the slope using a backward finite divided difference.
     $$x_{i+1} = x_i - \frac{f(x_i)(x_{i-1} - x_i)}{f(x_{i-1}) - f(x_i)} \quad$$
-> [!NOte]
+> [!Note]
 > Unlike Regula Falsi, the Secant method can occasionally **diverge** if initial guesses are poor.
 
 ### **1.4 Newton-Raphson Method**
 The most widely used root-locating formula. It uses a **tangent line** at an initial guess $x_i$ to find an improved estimate $x_{i+1}$.
 *   **Formula:**
-    $$x_{i+1} = x_i - \frac{f(x_i)}{f'(x_i)} \quad$$
+    $$x_{i+1} = x_i - \frac{f(x_i)}{f'(x_i)}$$
+
 > [!Warning]
 > It is **quadratically convergent**, meaning the number of significant digits approximately doubles each iteration. However, it requires an analytical derivative and may fail if $f'(x) \approx 0$.
 

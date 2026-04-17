@@ -72,7 +72,7 @@ A variation where unknowns are eliminated from **all equations** (above and belo
 ##### 2.1.3.1 Gauss Jordan Methods
 
 #### **2.1.3 Factorization methods**
-Every square matrix A with all non-zeros principle mnors can e factored uniquely into a lower triangular matrix $L$ and upper triangular matrix $U$ as, 
+Every square matrix $A$ with all non-zero principal minors can be factored uniquely into a lower triangular matrix $L$ and upper triangular matrix $U$ as: 
     $$
     \begin{equation}
     [A] = [L][U]

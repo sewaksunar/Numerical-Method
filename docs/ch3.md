@@ -6,20 +6,21 @@
 
 ## 3. Introduction
 
-For the given values of functin $f(x)$ at points $x_{0}, x_{1}, \cdots, x_{n}$ the precess of finding approximate values of the function $f(x)$ for new $x$'s between $x_{0}$ and $x_{n}$ is called interpolation.
+For the given values of function $f(x)$ at points $x_{0}, x_{1}, \cdots, x_{n}$ the process of finding approximate values of the function $f(x)$ for new $x$'s between $x_{0}$ and $x_{n}$ is called interpolation.
 
 Consider the points $(x_{0}, f_{0}), (x_{1}, f_{1}), \cdots, (x_{n}, f_{n})$. We find a polynomial $p_n(x)$ of degree $n$ or less than assumes the values $p_n({x_0}) = f_{0},\quad p_n({x_1}) = f_{1} \quad, \cdots, \quad p_n({x_n}) = f_{n}$.
 
 The polynomial $p_{n}(x)$ is called the interpolation polynomial and the points $x_{0}, x_{1}, \cdots, x_{n}$ are called the nodes.
 
 #### 3.1 Uniqueness of Interpolation Polynomial
-Weierstrass Approximation Theorem states - for any continous function $f(x)$ in an interval $a \le x \le b $and error $\epsilon > 0$ there is a polynomial $p_n(x)$ of suffeciently higher degree $n$ such that $|f(x)-p_{n}(x)|<0$ for all x in $[a, b]$.
+Weierstrass Approximation Theorem states: for any continuous function $f(x)$ in an interval $a \le x \le b$ and error $\epsilon > 0$ there is a polynomial $p_n(x)$ of sufficiently higher degree $n$ such that $|f(x)-p_{n}(x)| < \epsilon$ for all $x$ in $[a, b]$.
 
 The interpolation polynomial that satisfies $p_n({x_0}) = f_{0},\quad p_n({x_1}) = f_{1} \quad, \cdots, \quad p_n({x_n}) = f_{n}$ is unique.
 
-#### 3.1.3. Interpolation with unequally spaced intervals
-##### 3.1.3.1 Lagrange's Interpolation
-Consider a set of $(n+1)$ arbitary spaced data $(x_{0}, f_{0}), (x_{1}, f_{1}), \cdots, (x_{n}, f_{n})$. Then lagrange interpolation polynomial is given by, 
+### 3.2 Interpolation with Unequally Spaced Intervals
+
+#### 3.2.1 Lagrange's Interpolation
+Consider a set of $(n+1)$ arbitrary spaced data points $(x_{0}, f_{0}), (x_{1}, f_{1}), \cdots, (x_{n}, f_{n})$. Then lagrange interpolation polynomial is given by, 
 $$
 p_{n}(x) = \sum_{i=0}^{n} f_i L_{i}(x)
 $$
@@ -27,12 +28,12 @@ where,
 $$
 L_{i}(x) = \prod_{j=0, j \ne i }^{n} \frac{x-x_{i}}{x_{i}-x_{j}}
 $$
-##### 3.1.3.2 Newton's Divided Difference Method
-Consider a set of $(n+1)$ arbitary spaced data $(x_{0}, f_{0}), (x_{1}, f_{1}), \cdots, (x_{n}, f_{n})$. Let, 
+#### 3.2.2 Newton's Divided Difference Method
+Consider a set of $(n+1)$ arbitrary spaced data points $(x_{0}, f_{0}), (x_{1}, f_{1}), \cdots, (x_{n}, f_{n})$. Let: 
 $$
 p_{n}(x) = a_{0} + a_{1}(x-x_{0}) + a_{2}(x-x_{0})(x-x_{1}) + \cdots + a_{n}(x-x_{0})(x-x_{1}) \cdots (x-x_{n-1})
 $$
-be the polynomial that interplotes teh above points. Then, 
+be the polynomial that interpolates the above points. Then: 
 $p_n({x_0}) = f_{0},\quad p_n({x_1}) = f_{1} \quad, \cdots, \quad p_n({x_n}) = f_{n}$ then, 
 
 At point $x_{0}$,
@@ -68,7 +69,7 @@ $$
 a_{n} = f[x_{0}, x_{1}, x_{2}, \dots, x_{n}]
 $$
 
-Substituting the values of $a_0, a_1, a_2, \cdots, a_n$ in (1), we get Newton's division differecne interpolation polynomial,
+Substituting the values of $a_0, a_1, a_2, \cdots, a_n$ in the polynomial, we get Newton's divided difference interpolation polynomial:
 $$
 p_{n}(x) = f[x_{0}] + f[x_{0}, x_{1}](x-x_{0}) + f[x_{0}, x_{1}, x_{2}](x-x_{0})(x-x_{1}) + \cdots + f[x_{0}, x_{1}, x_{2}, \cdots, x_{n}](x-x_{0})(x-x_{1}) \cdots (x-x_{n-1})
 $$
@@ -120,8 +121,9 @@ $$
 >
 >These top-left entries provide the Newton interpolation coefficients: $a_0 = f[x_0]$, $a_1 = f[x_0,x_1]$, $a_2 = f[x_0,x_1,x_2]$, $a_3 = f[x_0,x_1,x_2,x_3]$.
 
-#### 3.1.1. Finite differences (Forward, backward, central and divided)
-##### 3.1.1.1 Forward Difference
+#### 3.2.3 Finite Differences (Forward, Backward, Central)
+
+##### 3.2.3.1 Forward Difference
 
 For equally spaced points with spacing $h = x_{i+1} - x_i$, the **forward differences** are:
 
@@ -152,7 +154,7 @@ $$
 
 where $\Delta f_i = f_{i+1} - f_i$, $\Delta^2 f_i = \Delta f_{i+1} - \Delta f_i$, etc.
 
-##### 3.1.1.2 Backward Difference
+##### 3.2.3.2 Backward Difference
 
 The **backward differences** are computed from previous values:
 
@@ -183,7 +185,7 @@ $$
 
 where $\nabla f_i = f_i - f_{i-1}$, $\nabla^2 f_i = \nabla f_i - \nabla f_{i-1}$, etc.
 
-##### 3.1.1.3 Central Difference
+##### 3.2.3.3 Central Difference
 
 The **central differences** are computed using symmetric values around the point:
 
@@ -217,9 +219,9 @@ $$
 where $\delta f_{i+1/2} = f_{i+1} - f_i$ and $\delta^2 f_i = f_{i+1} - 2f_i + f_{i-1}$.
 
 
-#### 3.1.2 Interpolation with equally spaced intervals differences
+#### 3.2.4 Interpolation with Equally Spaced Intervals
 
-##### 3.1.2.1 Newton’s forward and backward difference interpolation
+##### 3.2.4.1 Newton's Forward and Backward Difference Interpolation
 Let $y=f(x)$ takes the values $y_0, y_1, y_2, \cdots, y_n $ corresponding to the equal spaced values $x_0, x_1, x_2, \cdots, x_n $ spacing factor $h$.
 
 We have, by divided difference formula, 
@@ -232,13 +234,13 @@ $$
 [x_0, x_1, x_2, \cdots, x_n] = \frac{\Delta^{2} y_{0}}{n! h^{n}}
 $$
 
-Then, the Newton's divided differnce formula with $p = (x - x_0)/h$ reduces to,
+Then, the Newton's divided difference formula with $p = (x - x_0)/h$ reduces to:
 $$
 f(x) = y_{0} + p \Delta y_{0} + \frac{p(p-1)}{2!} \Delta^2 y_{0} + \frac{p(p-1)(p-2)}{3!} \Delta^2 y_{0} + \cdots + \frac{p(p-1)(n-2) \cdots (p-(n-1))}{n!} \Delta^2 y_{0} 
 $$
-which is **Newton-Gregary forwaard difference interpolate formula**.
+which is the **Newton-Gregory forward difference interpolation formula**.
 
-Similarly, **Newton-Gregary backward difference interpolate formula** is given by,
+Similarly, the **Newton-Gregory backward difference interpolation formula** is given by:
 $$
 f(x) = y_{n} + p \nabla y_{n} + \frac{p(p+1)}{2!} \nabla^2 y_{n} + \frac{p(p+1)(p+2)}{3!} \nabla^2 y_{n} + \cdots + \frac{p(p+1)(n+2) \cdots (p+(n-1))}{n!} \nabla^2 y_{n} 
 $$
@@ -246,7 +248,7 @@ where $
 p = \dfrac{x - x_{n}}{h}
 $
 
-##### 3.1.2.2 Stirling’s and Bessel’s central difference interpolation
+##### 3.2.4.2 Stirling's and Bessel's Central Difference Interpolation
 If $x_0$ lies centrally and the data are equally spaced with step $h$, set
 $$
  p = \frac{x - x_0}{h}.
