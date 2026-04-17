@@ -41,13 +41,15 @@ myst_enable_extensions = [
 ]
 
 # HTML output
-html_static_path = ['_static']
+import os
+html_static_path = ['_static'] if os.path.exists('_static') else []
 html_show_sourcelink = False
 html_show_sphinx = False
 html_show_copyright = True
 
 # Exclude patterns
-exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store']
+exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store', '.nojekyll']
 
 # Master document
 master_doc = 'index'
+suppress_warnings = ['myst.header_anchor']
