@@ -31,16 +31,18 @@ This method reduces the system to an **upper triangular form** through forward e
     x_i = \frac{b_i - \sum_{j=i+1}^n a_{ij}x_j}{a_{ii}}
     $$
 
->[!Note]  
->**Pivoting Strategies:** "Naive" Gauss elimination fails if a pivot element ($a_{kk}$) is zero. **Partial Pivoting** involves switching the pivot row with the row below it that contains the largest absolute coefficient in the pivot column to avoid division by zero and minimize round-off errors.
+```{note}
+**Pivoting Strategies:** "Naive" Gauss elimination fails if a pivot element ($a_{kk}$) is zero. Partial Pivoting involves switching the pivot row with the row below it that contains the largest absolute coefficient in the pivot column to avoid division by zero and minimize round-off errors.
+
 To get a pivot row or column, you typically follow strategies designed to ensure numerical stability and avoid division by zero during processes like Gauss elimination or LU decomposition.
+```
 
 ##### **1. Getting the Pivot Row (Partial Pivoting)**
 The goal is to find the **largest absolute value** in the current column to serve as the pivot element.
 
 *   For a system at the $k$th step of elimination, search the current column ($k$) starting from the diagonal element ($a_{kk}$) down to the bottom of the column.
-*   Identify the element in that column with the largest absolute magnitude. The row containing this element is your new **pivot row**.
-*  Switch this identified row with the current row $k$. This ensures that you are dividing by the largest possible number, which minimizes round-off errors and prevents division by zero if the original $a_{kk}$ was zero.
+    *   Identify the element in that column with the largest absolute magnitude. The row containing this element is your new pivot row.
+    *   Switch this identified row with the current row $k$. This ensures that you are dividing by the largest possible number, which minimizes round-off errors and prevents division by zero if the original $a_{kk}$ was zero.
 
 ##### **2. Getting the Pivot Row and Column (Complete Pivoting)**
 Complete pivoting is more thorough but rarely used due to its complexity.

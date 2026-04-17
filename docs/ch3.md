@@ -70,52 +70,54 @@ $$
 p_{n}(x) = f[x_{0}] + f[x_{0}, x_{1}](x-x_{0}) + f[x_{0}, x_{1}, x_{2}](x-x_{0})(x-x_{1}) + \cdots + f[x_{0}, x_{1}, x_{2}, \cdots, x_{n}](x-x_{0})(x-x_{1}) \cdots (x-x_{n-1})
 $$
 
->[!Note] Divided Difference Table
->
->For points $(x_0,f_0), (x_1,f_1), (x_2,f_2), (x_3,f_3)$ the divided differences are computed in a triangular table. Each entry in a higher column is formed from two entries in the previous column:
->
->$$
->f[x_i] = f_i,
->\qquad
->f[x_i, x_{i+1}] = \frac{f_{i+1} - f_i}{x_{i+1} - x_i},
->\qquad
->f[x_i, \dots, x_{i+k}] = \frac{f[x_{i+1}, \dots, x_{i+k}] - f[x_i, \dots, x_{i+k-1}]}{x_{i+k} - x_i}
->$$
->
->Then the triangular table is:
->
->$$
->\begin{array}{c|c|c|c|c}
->x & f(x) & \text{1st DD} & \text{2nd DD} & \text{3rd DD} \\
->\hline
->x_0 & f_0 &  &  &  \\
-> &  & f[x_0,x_1] &  &  \\
->x_1 & f_1 &  & f[x_0,x_1,x_2] &  \\
-> &  & f[x_1,x_2] &  & f[x_0,x_1,x_2,x_3] \\
->x_2 & f_2 &  & f[x_1,x_2,x_3] &  \\
-> &  & f[x_2,x_3] &  &  \\
->x_3 & f_3 &  &  & 
->\end{array}
->$$
->
->With the sample values, the table entries become:
->
->$$
->f[x_0,x_1]=\frac{f_1-f_0}{x_1-x_0},\qquad
->f[x_1,x_2]=\frac{f_2-f_1}{x_2-x_1},\qquad
->f[x_2,x_3]=\frac{f_3-f_2}{x_3-x_2}
->$$
->
->$$
->f[x_0,x_1,x_2]=\frac{f[x_1,x_2]-f[x_0,x_1]}{x_2-x_0},\qquad
->f[x_1,x_2,x_3]=\frac{f[x_2,x_3]-f[x_1,x_2]}{x_3-x_1}
->$$
->
->$$
->f[x_0,x_1,x_2,x_3] = \frac{f[x_1,x_2,x_3] - f[x_0,x_1,x_2]}{x_3-x_0}
->$$
->
->These top-left entries provide the Newton interpolation coefficients: $a_0 = f[x_0]$, $a_1 = f[x_0,x_1]$, $a_2 = f[x_0,x_1,x_2]$, $a_3 = f[x_0,x_1,x_2,x_3]$.
+```{note}
+**Divided Difference Table**
+
+For points $(x_0,f_0), (x_1,f_1), (x_2,f_2), (x_3,f_3)$ the divided differences are computed in a triangular table. Each entry in a higher column is formed from two entries in the previous column:
+
+$$
+f[x_i] = f_i,
+\qquad
+f[x_i, x_{i+1}] = \frac{f_{i+1} - f_i}{x_{i+1} - x_i},
+\qquad
+f[x_i, \dots, x_{i+k}] = \frac{f[x_{i+1}, \dots, x_{i+k}] - f[x_i, \dots, x_{i+k-1}]}{x_{i+k} - x_i}
+$$
+
+Then the triangular table is:
+
+$$
+\begin{array}{c|c|c|c|c}
+x & f(x) & \text{1st DD} & \text{2nd DD} & \text{3rd DD} \\
+\hline
+x_0 & f_0 &  &  &  \\
+ &  & f[x_0,x_1] &  &  \\
+x_1 & f_1 &  & f[x_0,x_1,x_2] &  \\
+ &  & f[x_1,x_2] &  & f[x_0,x_1,x_2,x_3] \\
+x_2 & f_2 &  & f[x_1,x_2,x_3] &  \\
+ &  & f[x_2,x_3] &  &  \\
+x_3 & f_3 &  &  & 
+\end{array}
+$$
+
+With the sample values, the table entries become:
+
+$$
+f[x_0,x_1]=\frac{f_1-f_0}{x_1-x_0},\qquad
+f[x_1,x_2]=\frac{f_2-f_1}{x_2-x_1},\qquad
+f[x_2,x_3]=\frac{f_3-f_2}{x_3-x_2}
+$$
+
+$$
+f[x_0,x_1,x_2]=\frac{f[x_1,x_2]-f[x_0,x_1]}{x_2-x_0},\qquad
+f[x_1,x_2,x_3]=\frac{f[x_2,x_3]-f[x_1,x_2]}{x_3-x_1}
+$$
+
+$$
+f[x_0,x_1,x_2,x_3] = \frac{f[x_1,x_2,x_3] - f[x_0,x_1,x_2]}{x_3-x_0}
+$$
+
+These top-left entries provide the Newton interpolation coefficients: $a_0 = f[x_0]$, $a_1 = f[x_0,x_1]$, $a_2 = f[x_0,x_1,x_2]$, $a_3 = f[x_0,x_1,x_2,x_3]$.
+```
 
 #### 3.2.3 Finite Differences (Forward, Backward, Central)
 

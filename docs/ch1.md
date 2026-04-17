@@ -33,36 +33,39 @@ A **bracketing method** based on the Intermediate Value Theorem. If a continuous
 *   **Iteration Requirement:** The number of iterations ($n$) required to reach a specific absolute error ($E_{a,d}$) can be calculated a priori:
 
     $$n = \log_2 \left( \frac{\Delta x_0}{E_{a,d}} \right) \quad \text{where } \Delta x_0 = x_u^0 - x_l^0$$
->[!Note]
-> It is stable and **guaranteed to converge**, but it is relatively slow compared to open methods.
+```{note}
+It is stable and guaranteed to converge, but it is relatively slow compared to open methods.
+```
 
 ### **1.3 Regula Falsi and Secant Methods**
-*   **Regula Falsi (False Position):** A bracketing method that uses **linear interpolation**. It joins $f(x_l)$ and $f(x_u)$ with a straight line; the point where this line crosses the x-axis is the root estimate.
+*   **Regula Falsi (False Position):** A bracketing method that uses linear interpolation. It joins $f(x_l)$ and $f(x_u)$ with a straight line; the point where this line crosses the x-axis is the root estimate.
 
     $$x_r = x_u - \frac{f(x_u)(x_l - x_u)}{f(x_l) - f(x_u)}$$
-*   **Secant Method:** An **open method** that uses a similar formula but does **not require the root to be bracketed**. It uses two initial estimates and calculates the slope using a backward finite divided difference.
+*   **Secant Method:** An open method that uses a similar formula but does not require the root to be bracketed. It uses two initial estimates and calculates the slope using a backward finite divided difference.
 
     $$x_{i+1} = x_i - \frac{f(x_i)(x_{i-1} - x_i)}{f(x_{i-1}) - f(x_i)}$$
-> [!Note]
-> Unlike Regula Falsi, the Secant method can occasionally **diverge** if initial guesses are poor.
+```{note}
+Unlike Regula Falsi, the Secant method can occasionally diverge if initial guesses are poor.
+```
 
 ### **1.4 Newton-Raphson Method**
-The most widely used root-locating formula. It uses a **tangent line** at an initial guess $x_i$ to find an improved estimate $x_{i+1}$.
+The most widely used root-locating formula. It uses a tangent line at an initial guess $x_i$ to find an improved estimate $x_{i+1}$.
 *   **Formula:**
     $$x_{i+1} = x_i - \frac{f(x_i)}{f'(x_i)}$$
 
-> [!Warning]
-> It is **quadratically convergent**, meaning the number of significant digits approximately doubles each iteration. However, it requires an analytical derivative and may fail if $f'(x) \approx 0$.
+```{warning}
+It is quadratically convergent, meaning the number of significant digits approximately doubles each iteration. However, it requires an analytical derivative and may fail if $f'(x) \approx 0$.
+```
 
 ### **1.5 Fixed Point Iteration Method**
-Also known as one-point iteration, it involves rearranging $f(x) = 0$ into the form **$x = g(x)$**.
+Also known as one-point iteration, it involves rearranging $f(x) = 0$ into the form $x = g(x)$.
 *   **Formula:**
 
     $$x_{i+1} = g(x_i)$$
-*   **Convergence Requirement:** The method converges if the magnitude of the slope $|g'(x)| < 1$ in the region of interest. It typically exhibits **linear convergence**.
+*   **Convergence Requirement:** The method converges if the magnitude of the slope $|g'(x)| < 1$ in the region of interest. It typically exhibits linear convergence.
 
 ### **1.6 Comparison of the Methods**
-*   **Bracketing vs. Open-Ended:** Bracketing methods (Bisection, Regula Falsi) are slower but **always converge**. Open methods (Newton-Raphson, Secant, Fixed Point) are much faster but **can diverge**.
+*   **Bracketing vs. Open-Ended:** Bracketing methods (Bisection, Regula Falsi) are slower but always converge. Open methods (Newton-Raphson, Secant, Fixed Point) are much faster but can diverge.
 *   **Rates of Convergence:**
     *   **Bisection:** Linear (Slowest).
     *   **Fixed Point:** Linear.
