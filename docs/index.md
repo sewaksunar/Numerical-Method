@@ -13,9 +13,9 @@ ch3
 
 ## Quick Navigation
 
-- **[Chapter 1: Solution of Non-Linear Equations](ch1.md)** - Bisection, Newton-Raphson, Secant methods
-- **[Chapter 2: System of Linear Equations](ch2.md)** - Gaussian elimination, iterative methods, eigenvalues
-- **[Chapter 3: Interpolation](ch3.md)** - Lagrange, Newton's divided differences, Stirling's formulas
+- **[Chapter 1: Solution of Non-Linear Equations](ch1)** - Bisection, Newton-Raphson, Secant methods
+- **[Chapter 2: System of Linear Equations](ch2)** - Gaussian elimination, iterative methods, eigenvalues
+- **[Chapter 3: Interpolation](ch3)** - Lagrange, Newton's divided differences, Stirling's formulas
 
 ## About This Course
 
