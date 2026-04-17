@@ -9,17 +9,17 @@ Direct methods compute the solution in a finite number of operations. The genera
 This method reduces the system to an **upper triangular form** through forward elimination and then solves for unknowns via **back substitution**.
 *   **Forward Elimination:** The objective is to eliminate $x_1$ from the second to the $n$th equation, then $x_2$ from the third to $n$th, and so on.
     *   **Multiplier formula:** 
-    $$
+    $
     f_{ik} = \frac{a_{ik}} {a_{kk}}
-    $$
+    $
 
     *   **Row transformation:** 
-    $$
+    $
     a_{ij}^{new} = a_{ij} - f_{ik} \cdot a_{kj}$$
     and 
-    $$
+    $
     b_i^{new} = b_i - f_{ik} \cdot b_k
-    $$
+    $
 
 *   **Back Substitution:** Once the matrix is triangular, unknowns are solved from the bottom up.
     *   **Formula:** 
@@ -69,42 +69,35 @@ A variation where unknowns are eliminated from **all equations** (above and belo
 #### 2.1.3 Matrix inverse using Gauss Jordan and Gauss elimination methods
 ##### 2.1.3.1 Gauss Jordan Methods
 
-#### **2.1.3 Factorization methods**
-Every square matrix $A$ with all non-zero principal minors can be factored uniquely into a lower triangular matrix $L$ and upper triangular matrix $U$ as: 
-    $$
-    \begin{equation}
-    [A] = [L][U]
-    \end{equation}
-    $$
+Gauss-Jordan elimination transforms the coefficient matrix into an identity matrix.
+
+#### 2.1.3.2 Factorization methods
+Every square matrix $A$ with all non-zero principal minors can be factored uniquely into a lower triangular matrix $L$ and upper triangular matrix $U$ as:
+
+$$[A] = [L][U]$$
 
 **Method:** Consider the system of linear equations:
-    $$
-    \begin{equation}
-    \begin{aligned}
-    a_{11} x_1 + a_{12} x_2 + \cdots + a_{1n} x_n &= b_1 \\
-    a_{21} x_1 + a_{22} x_2 + \cdots + a_{2n} x_n &= b_2 \\
-    \vdots \\
-    a_{n1} x_1 + a_{n2} x_2 + \cdots + a_{nn} x_n &= b_n
-    \end{aligned}
-    \end{equation}
-    $$
+
+$$\begin{aligned}
+a_{11} x_1 + a_{12} x_2 + \cdots + a_{1n} x_n &= b_1 \\
+a_{21} x_1 + a_{22} x_2 + \cdots + a_{2n} x_n &= b_2 \\
+\vdots \\
+a_{n1} x_1 + a_{n2} x_2 + \cdots + a_{nn} x_n &= b_n
+\end{aligned}$$
+
 which can be written as:
-    $$
-    \begin{equation}
-    [A][X] = [B]
-    \end{equation}
-    $$
+
+$$[A][X] = [B]$$
 where
-    $$
-    [A] = \begin{bmatrix}
-    a_{11} & a_{12} & \cdots & a_{1n} \\
-    a_{21} & a_{22} & \cdots & a_{2n} \\
-    \vdots & \vdots & \ddots & \vdots \\
-    a_{n1} & a_{n2} & \cdots & a_{nn}
-    \end{bmatrix}, \qquad
-    [X] = \begin{bmatrix} x_1 \\ x_2 \\ \vdots \\ x_n \end{bmatrix}, \qquad
-    [B] = \begin{bmatrix} b_1 \\ b_2 \\ \vdots \\ b_n \end{bmatrix}
-    $$
+
+$$[A] = \begin{bmatrix}
+a_{11} & a_{12} & \cdots & a_{1n} \\
+a_{21} & a_{22} & \cdots & a_{2n} \\
+\vdots & \vdots & \ddots & \vdots \\
+a_{n1} & a_{n2} & \cdots & a_{nn}
+\end{bmatrix}, \qquad
+[X] = \begin{bmatrix} x_1 \\ x_2 \\ \vdots \\ x_n \end{bmatrix}, \qquad
+[B] = \begin{bmatrix} b_1 \\ b_2 \\ \vdots \\ b_n \end{bmatrix}$$
 
 Then, if $[A] = [L][U]$, the system can be rewritten as:
 
@@ -124,42 +117,39 @@ where we define $[V] = [U][X]$.
 
 **Example:** Consider a $3 \times 3$ system:
     $$
-    \begin{aligned}
-    [A] &= \begin{bmatrix}
+    [A] = \begin{bmatrix}
             a_{11} & a_{12} & a_{13} \\
             a_{21} & a_{22} & a_{23} \\
             a_{31} & a_{32} & a_{33}
-            \end{bmatrix} \\
-1. Do-Little's method:
+            \end{bmatrix}
     $$
-    \begin{aligned}
-    [L] &= \begin{bmatrix}
+
+**Do-Little's method:**
+    $$
+    [L] = \begin{bmatrix}
             1 & 0 & 0 \\
             l_{21} & 1 & 0 \\
             l_{31} & l_{32} & 1
-            \end{bmatrix}, 
-    [U] &= \begin{bmatrix}
+            \end{bmatrix}, \qquad
+    [U] = \begin{bmatrix}
             u_{11} & u_{12} & u_{13} \\
             0 & u_{22} & u_{23} \\
             0 & 0 & u_{33}
             \end{bmatrix}
-    \end{aligned}
     $$
 
-2. Crout’s method:
+**Crout's method:**
     $$
-    \begin{aligned}
-    [L] &= \begin{bmatrix}
+    [L] = \begin{bmatrix}
             l_{11} & 0 & 0 \\
             l_{21} & l_{22} & 0 \\
             l_{31} & l_{32} & l_{33}
-            \end{bmatrix} ,
-    [U] &= \begin{bmatrix}
+            \end{bmatrix} , \qquad
+    [U] = \begin{bmatrix}
             1 & u_{12} & u_{13} \\
             0 & 1 & u_{23} \\
             0 & 0 & 1
             \end{bmatrix}
-    \end{aligned}
     $$
 
 
@@ -188,10 +178,10 @@ The most common iterative technique, which **immediately uses the latest availab
 If $x = x_{1}^{(n)}, x_{2}^{(n)}, x_{3}^{(n)}, \cdots, x_{n}^{(n)}$ be the $n^{th}$ approximation to the system (2), then the $ (n+1)^{th}$ approximation to the root is given by, 
 $$
 \begin{align*}
-x_{1}^{n+1} &= \frac{1}{a_{11}}[b_{1} - a_{12}x_{2}^{(n)} - a_{13}x_{3}^{(n)} - \cdots - a_{1n}x_{n}^{(n)}] \\
-x_{2}^{n+2} &= \frac{1}{a_{22}}[b_{2} - a_{21}x_{1}^{(n+1)} - a_{23}x_{3}^{(n)} - \cdots - a_{2n}x_{n}^{(n)}] \\
+x_{1}^{(n+1)} &= \frac{1}{a_{11}}[b_{1} - a_{12}x_{2}^{(n)} - a_{13}x_{3}^{(n)} - \cdots - a_{1n}x_{n}^{(n)}] \\
+x_{2}^{(n+1)} &= \frac{1}{a_{22}}[b_{2} - a_{21}x_{1}^{(n+1)} - a_{23}x_{3}^{(n)} - \cdots - a_{2n}x_{n}^{(n)}] \\
 \vdots \\
-x_{n}^{n+1} &= \frac{1}{a_{nn}}[b_{n} - a_{n1}x_{1}^{(n+1)} - a_{n2}x_{2}^{(n+1)} - \cdots - a_{n(n-1)}x_{n-1}^{(n+1)}]
+x_{n}^{(n+1)} &= \frac{1}{a_{nn}}[b_{n} - a_{n1}x_{1}^{(n+1)} - a_{n2}x_{2}^{(n+1)} - \cdots - a_{n(n-1)}x_{n-1}^{(n+1)}]
 \end{align*}
 $$
 
@@ -215,7 +205,7 @@ X^{(2)} = \frac{1}{k_{2}} X^{(2)} \\
 \vdots \\
 X^{(n)} = \frac{1}{k_{n}} X^{(n)} \\ 
 $$
-where $k_n$ is the absolutely largest element of $Y^{n}$. Then the seqquence, $k_1, k_2, \cdots, k_n$ converges to the numerically dominant eigen values of matrix $A$. The $X^{(n)}$ is the corresponding eigen vector of $\lambda_{n}$.
+where $k_n$ is the absolutely largest element of $Y^{(n)}$. Then the sequence $k_1, k_2, \cdots, k_n$ converges to the numerically dominant eigenvalues of matrix $A$. The $X^{(n)}$ is the corresponding eigenvector of $\lambda_{n}$.
 
 **Smallest Eigenvalue:** Determined by applying the power method to the **inverse matrix $[A]^{-1}$**; the result is the reciprocal of the smallest eigenvalue and corresponding eigen vector.
 

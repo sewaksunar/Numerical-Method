@@ -26,6 +26,8 @@ html_theme_options = {
     'prev_next_buttons_location': 'bottom',
     'style_external_links': False,
     'style_nav_header_background': '#2c3e50',
+    'style_primary_color': '#3498db',
+    'style_secondary_color': '#2980b9',
     'collapse_navigation': False,
     'sticky_navigation': True,
     'navigation_depth': 5,
@@ -34,7 +36,8 @@ html_theme_options = {
     'breadcrumbs': True,
     'canonical_url': 'https://sewaksunar.github.io/Numerical-Method/',
     'analytics_id': '',
-    'body_max_width': '900px',
+    'body_max_width': '1000px',
+    'right_sidebar_width': '300px',
 }
 
 # HTML theme assets

@@ -66,9 +66,8 @@ a_{n} = f[x_{0}, x_{1}, x_{2}, \dots, x_{n}]
 $$
 
 Substituting the values of $a_0, a_1, a_2, \cdots, a_n$ in the polynomial, we get Newton's divided difference interpolation polynomial:
-$$
-p_{n}(x) = f[x_{0}] + f[x_{0}, x_{1}](x-x_{0}) + f[x_{0}, x_{1}, x_{2}](x-x_{0})(x-x_{1}) + \cdots + f[x_{0}, x_{1}, x_{2}, \cdots, x_{n}](x-x_{0})(x-x_{1}) \cdots (x-x_{n-1})
-$$
+
+$$p_{n}(x) = f[x_{0}] + f[x_{0}, x_{1}](x-x_{0}) + f[x_{0}, x_{1}, x_{2}](x-x_{0})(x-x_{1}) + \cdots + f[x_{0}, x_{1}, x_{2}, \cdots, x_{n}](x-x_{0})(x-x_{1}) \cdots (x-x_{n-1})$$
 
 ```{note}
 **Divided Difference Table**
@@ -85,19 +84,15 @@ $$
 
 Then the triangular table is:
 
-$$
-\begin{array}{c|c|c|c|c}
-x & f(x) & \text{1st DD} & \text{2nd DD} & \text{3rd DD} \\
-\hline
-x_0 & f_0 &  &  &  \\
- &  & f[x_0,x_1] &  &  \\
-x_1 & f_1 &  & f[x_0,x_1,x_2] &  \\
- &  & f[x_1,x_2] &  & f[x_0,x_1,x_2,x_3] \\
-x_2 & f_2 &  & f[x_1,x_2,x_3] &  \\
- &  & f[x_2,x_3] &  &  \\
-x_3 & f_3 &  &  & 
-\end{array}
-$$
+| $x$ | $f(x)$ | 1st DD | 2nd DD | 3rd DD |
+|-----|--------|--------|--------|--------|
+| $x_0$ | $f_0$ | | | |
+| | | $f[x_0,x_1]$ | | |
+| $x_1$ | $f_1$ | | $f[x_0,x_1,x_2]$ | |
+| | | $f[x_1,x_2]$ | | $f[x_0,x_1,x_2,x_3]$ |
+| $x_2$ | $f_2$ | | $f[x_1,x_2,x_3]$ | |
+| | | $f[x_2,x_3]$ | | |
+| $x_3$ | $f_3$ | | | |
 
 With the sample values, the table entries become:
 
@@ -136,19 +131,15 @@ $$\Delta^n f_i = \sum_{k=0}^{n} (-1)^{n-k} \binom{n}{k} f_{i+k}$$
 
 **Forward Difference Table:**
 
-$$
-\begin{array}{c|c|c|c|c}
-x & f(x) & \Delta f & \Delta^2 f & \Delta^3 f \\
-\hline
-x_0 & f_0 &  &  &  \\
- &  & \Delta f_0 &  &  \\
-x_1 & f_1 &  & \Delta^2 f_0 &  \\
- &  & \Delta f_1 &  & \Delta^3 f_0 \\
-x_2 & f_2 &  & \Delta^2 f_1 &  \\
- &  & \Delta f_2 &  &  \\
-x_3 & f_3 &  &  & 
-\end{array}
-$$
+| $x$ | $f(x)$ | $\Delta f$ | $\Delta^2 f$ | $\Delta^3 f$ |
+|-----|--------|-----------|--------------|---------------|
+| $x_0$ | $f_0$ | | | |
+| | | $\Delta f_0$ | | |
+| $x_1$ | $f_1$ | | $\Delta^2 f_0$ | |
+| | | $\Delta f_1$ | | $\Delta^3 f_0$ |
+| $x_2$ | $f_2$ | | $\Delta^2 f_1$ | |
+| | | $\Delta f_2$ | | |
+| $x_3$ | $f_3$ | | | |
 
 where $\Delta f_i = f_{i+1} - f_i$, $\Delta^2 f_i = \Delta f_{i+1} - \Delta f_i$, etc.
 
@@ -167,19 +158,15 @@ $$\nabla^n f_i = \sum_{k=0}^{n} (-1)^{k} \binom{n}{k} f_{i-k}$$
 
 **Backward Difference Table:**
 
-$$
-\begin{array}{c|c|c|c|c}
-x & f(x) & \nabla f & \nabla^2 f & \nabla^3 f \\
-\hline
-x_0 & f_0 &  &  &  \\
- &  & \nabla f_1 &  &  \\
-x_1 & f_1 &  & \nabla^2 f_2 &  \\
- &  & \nabla f_2 &  & \nabla^3 f_3 \\
-x_2 & f_2 &  & \nabla^2 f_3 &  \\
- &  & \nabla f_3 &  &  \\
-x_3 & f_3 &  &  & 
-\end{array}
-$$
+| $x$ | $f(x)$ | $\nabla f$ | $\nabla^2 f$ | $\nabla^3 f$ |
+|-----|--------|-----------|--------------|---------------|
+| $x_0$ | $f_0$ | | | |
+| | | $\nabla f_1$ | | |
+| $x_1$ | $f_1$ | | $\nabla^2 f_2$ | |
+| | | $\nabla f_2$ | | $\nabla^3 f_3$ |
+| $x_2$ | $f_2$ | | $\nabla^2 f_3$ | |
+| | | $\nabla f_3$ | | |
+| $x_3$ | $f_3$ | | | |
 
 where $\nabla f_i = f_i - f_{i-1}$, $\nabla^2 f_i = \nabla f_i - \nabla f_{i-1}$, etc.
 
@@ -200,19 +187,15 @@ $$\delta^n f_i = \sum_{k=0}^{n} (-1)^{n-k} \binom{n}{k} f_{i+k-n/2}$$
 
 **Central Difference Table:**
 
-$$
-\begin{array}{c|c|c|c|c}
-x & f(x) & \delta f & \delta^2 f & \delta^3 f \\
-\hline
-x_0 & f_0 &  &  &  \\
- &  & \delta f_{1/2} &  &  \\
-x_1 & f_1 &  & \delta^2 f_1 &  \\
- &  & \delta f_{3/2} &  & \delta^3 f_{3/2} \\
-x_2 & f_2 &  & \delta^2 f_2 &  \\
- &  & \delta f_{5/2} &  &  \\
-x_3 & f_3 &  &  & 
-\end{array}
-$$
+| $x$ | $f(x)$ | $\delta f$ | $\delta^2 f$ | $\delta^3 f$ |
+|-----|--------|-----------|--------------|---------------|
+| $x_0$ | $f_0$ | | | |
+| | | $\delta f_{1/2}$ | | |
+| $x_1$ | $f_1$ | | $\delta^2 f_1$ | |
+| | | $\delta f_{3/2}$ | | $\delta^3 f_{3/2}$ |
+| $x_2$ | $f_2$ | | $\delta^2 f_2$ | |
+| | | $\delta f_{5/2}$ | | |
+| $x_3$ | $f_3$ | | | |
 
 where $\delta f_{i+1/2} = f_{i+1} - f_i$ and $\delta^2 f_i = f_{i+1} - 2f_i + f_{i-1}$.
 
@@ -266,19 +249,16 @@ $$
 $$
 
 A Stirling central difference table around $x_0$ is:
-$$
-\begin{array}{c|c|c|c|c|c}
-x & y & \Delta y & \Delta^{2} y & \Delta^{3} y & \Delta^{4} y \\
-\hline
-x_{-2} & y_{-2} &  &  &  &  \\
- &  & \Delta y_{-2} &  &  &  \\
-x_{-1} & y_{-1} &  & \Delta^{2} y_{-2} &  &  \\
- &  & \Delta y_{-1} &  & \Delta^{3} y_{-2} &  \\
-x_{0} & y_{0} &  & \Delta^{2} y_{-1} &  & \Delta^{4} y_{-2} \\
- &  & \Delta y_{0} &  & \Delta^{3} y_{-1} &  \\
-x_{1} & y_{1} &  & \Delta^{2} y_{0} &  &  \\
-\end{array}
-$$
+
+| $x$ | $y$ | $\Delta y$ | $\Delta^{2} y$ | $\Delta^{3} y$ | $\Delta^{4} y$ |
+|-----|-----|-----------|--------|--------|--------|
+| $x_{-2}$ | $y_{-2}$ | | | | |
+| | | $\Delta y_{-2}$ | | | |
+| $x_{-1}$ | $y_{-1}$ | | $\Delta^{2} y_{-2}$ | | |
+| | | $\Delta y_{-1}$ | | $\Delta^{3} y_{-2}$ | |
+| $x_{0}$ | $y_{0}$ | | $\Delta^{2} y_{-1}$ | | $\Delta^{4} y_{-2}$ |
+| | | $\Delta y_{0}$ | | $\Delta^{3} y_{-1}$ | |
+| $x_{1}$ | $y_{1}$ | | $\Delta^{2} y_{0}$ | | |
 
 **Bessel’s central difference formula** is used when the interpolation point lies midway between two central nodes, typically between $x_0$ and $x_1$. Let
 $$
@@ -298,17 +278,14 @@ $$
 $$
 
 A Bessel central difference table for values around the midpoint is:
-$$
-\begin{array}{c|c|c|c|c}
-x & y & \delta y & \delta^{2} y & \delta^{3} y \\
-\hline
-x_0 & y_0 &  &  &  \\
- &  & \delta y_{1/2} &  &  \\
-x_1 & y_1 &  & \delta^{2} y_1 &  \\
- &  & \delta y_{3/2} &  & \delta^{3} y_{1} \\
-x_2 & y_2 &  & \delta^{2} y_2 &  \\
-\end{array}
-$$
+
+| $x$ | $y$ | $\delta y$ | $\delta^{2} y$ | $\delta^{3} y$ |
+|-----|-----|-----------|--------|--------|
+| $x_0$ | $y_0$ | | | |
+| | | $\delta y_{1/2}$ | | |
+| $x_1$ | $y_1$ | | $\delta^{2} y_1$ | |
+| | | $\delta y_{3/2}$ | | $\delta^{3} y_{1}$ |
+| $x_2$ | $y_2$ | | $\delta^{2} y_2$ | |
 
 Bessel’s table arranges values so that the midpoint difference $\delta y_{1/2}$ appears between $y_0$ and $y_1$, making the formula accurate for points near the half-step location.
 
