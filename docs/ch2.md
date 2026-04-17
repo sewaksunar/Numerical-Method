@@ -3,7 +3,7 @@
 This note covers the **Solution of System of Linear Algebraic Equations**, a fundamental area of numerical methods used in engineering to model systems such as structures, electric circuits, and fluid networks.
 
 ### **2.1 Direct Methods**
-Direct methods compute the solution in a finite number of operations. The general form of a linear system is **$[A]\{X\} = \{B\}$**, where $[A]$ is the coefficient matrix, $\{X\}$ is the vector of unknowns, and $\{B\}$ is the vector of constants.
+Direct methods compute the solution in a finite number of operations. The general form of a linear system is $[A]\{X\} = \{B\}$, where $[A]$ is the coefficient matrix, $\{X\}$ is the vector of unknowns, and $\{B\}$ is the vector of constants.
 
 #### **2.1.1 Gauss Elimination and Pivoting**
 This method reduces the system to an **upper triangular form** through forward elimination and then solves for unknowns via **back substitution**.

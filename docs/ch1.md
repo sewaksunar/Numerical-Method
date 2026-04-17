@@ -108,21 +108,22 @@ $$
 * **2. The Matrix Update Equation**
 The relationship to determine the refined estimates $\{X_{i+1}\}$ from the current estimates $\{X_i\}$ is represented as a set of linear simultaneous equations:
 
-**$$[J]\{X_{i+1}\} = -\{F_i\} + [J]\{X_i\}$$**
+$$[J]\{X_{i+1}\} = -\{F_i\} + [J]\{X_i\}$$
 
 Where:
-*   **$\{X_i\}$** is the vector of current guesses: $\begin{bmatrix} x_i \\ y_i \end{bmatrix}$.
-*   **$\{X_{i+1}\}$** is the vector of the next (improved) estimates: $\begin{bmatrix} x_{i+1} \\ y_{i+1} \end{bmatrix}$.
-*   **$\{F_i\}$** is the vector containing the values of the functions evaluated at the current guess: $\begin{bmatrix} u(x_i, y_i) \\ v(x_i, y_i) \end{bmatrix}$.
+*   $\{X_i\}$ is the vector of current guesses: $\begin{bmatrix} x_i \\ y_i \end{bmatrix}$.
+*   $\{X_{i+1}\}$ is the vector of the next (improved) estimates: $\begin{bmatrix} x_{i+1} \\ y_{i+1} \end{bmatrix}$.
+*   $\{F_i\}$ is the vector containing the values of the functions evaluated at the current guess: $\begin{bmatrix} u(x_i, y_i) \\ v(x_i, y_i) \end{bmatrix}$.
 
 * **3. Solution via Matrix Inversion (Formal Representation)**
 While often solved using techniques like Gauss elimination for efficiency, the formal solution using matrix algebra is:
 
-**$$\{X_{i+1}\} = \{X_i\} - [J]^{-1}\{F_i\}$$**
+$$\{X_{i+1}\} = \{X_i\} - [J]^{-1}\{F_i\}$$
 
-This formula shows that the next estimate is obtained by subtracting the product of the **inverse Jacobian** and the **function vector** from the current estimate.
+This formula shows that the next estimate is obtained by subtracting the product of the inverse Jacobian and the function vector from the current estimate.
 
->[!Note]
->*   **Linear System:** At each iteration, the matrix form represents a set of linear equations that can be solved for the unknowns $x_{i+1}$ and $y_{i+1}$.
->*   **Convergence:** Like the single-equation version, this method is highly efficient but may **diverge** if initial guesses are not sufficiently close to the true roots.
->*   **Shortcomings:** Evaluating the partial derivatives in the Jacobian matrix $[J]$ can sometimes be inconvenient or difficult; in such cases, finite-difference approximations are often used instead.
+```{note}
+*   **Linear System:** At each iteration, the matrix form represents a set of linear equations that can be solved for the unknowns $x_{i+1}$ and $y_{i+1}$.
+*   **Convergence:** Like the single-equation version, this method is highly efficient but may diverge if initial guesses are not sufficiently close to the true roots.
+*   **Shortcomings:** Evaluating the partial derivatives in the Jacobian matrix $[J]$ can sometimes be inconvenient or difficult; in such cases, finite-difference approximations are often used instead.
+```
