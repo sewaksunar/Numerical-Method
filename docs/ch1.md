@@ -6,14 +6,21 @@ This course module on the **Solution of Non-Linear Equations** covers the fundam
 Numerical methods yield **approximate results**, and understanding the associated errors is critical for engineering applications.
 *   **Accuracy vs. Precision:** **Accuracy** refers to how closely a computed value agrees with the true value. **Precision** refers to how closely individual computed values agree with each other.
 *   **True Error ($E_t$):** The difference between the true value and the approximation.
-    $$E_t = \text{true value} - \text{approximation} \quad$$
+
+    $$E_t = \text{true value} - \text{approximation}$$
 *   **True Percent Relative Error ($\epsilon_t$):** Normalises the error to the true value.
-    $$\epsilon_t = \frac{\text{true error}}{\text{true value}} \times 100\% \quad$$
+
+    $$\epsilon_t = \frac{\text{true error}}{\text{true value}} \times 100\%$$
 *   **Approximate Percent Relative Error ($\epsilon_a$):** Used in iterative methods when the true value is unknown, comparing the current and previous approximations.
-    $$\epsilon_a = \left| \frac{\text{current approximation} - \text{previous approximation}}{\text{current approximation}} \right| \times 100\% \quad$$
+
+    $$\epsilon_a = \left| \frac{\text{current approximation} - \text{previous approximation}}{\text{current approximation}} \right| \times 100\%$$
 *   **Stopping Criterion ($\epsilon_s$):** Iterations are terminated when the error falls below a prespecified tolerance.
-    $$|\epsilon_a| < \epsilon_s \quad$$
-    To ensure the result is correct to $n$ significant figures, use: $\epsilon_s = (0.5 \times 10^{2-n})\%$.
+
+    $$|\epsilon_a| < \epsilon_s$$
+
+    To ensure the result is correct to $n$ significant figures, use:
+
+    $$\epsilon_s = (0.5 \times 10^{2-n})\%$$
 *   **Sources of Error:**
     *   **Round-Off Error:** Due to the computer's inability to represent certain numbers exactly with a finite number of digits.
     *   **Truncation Error:** Results from using an approximation in place of an exact mathematical procedure, such as truncating a **Taylor series**.
@@ -21,17 +28,21 @@ Numerical methods yield **approximate results**, and understanding the associate
 ### **1.2 Bisection Method**
 A **bracketing method** based on the Intermediate Value Theorem. If a continuous function $f(x)$ changes sign over an interval $[x_l, x_u]$, at least one real root exists between them.
 *   **Algorithm:** The interval is repeatedly halved. The root estimate is the midpoint:
-    $$x_r = \frac{x_l + x_u}{2} \quad$$
+
+    $$x_r = \frac{x_l + x_u}{2}$$
 *   **Iteration Requirement:** The number of iterations ($n$) required to reach a specific absolute error ($E_{a,d}$) can be calculated a priori:
-    $$n = \log_2 \left( \frac{\Delta x_0}{E_{a,d}} \right) \quad \text{where } \Delta x_0 = x_u^0 - x_l^0 \quad$$
+
+    $$n = \log_2 \left( \frac{\Delta x_0}{E_{a,d}} \right) \quad \text{where } \Delta x_0 = x_u^0 - x_l^0$$
 >[!Note]
 > It is stable and **guaranteed to converge**, but it is relatively slow compared to open methods.
 
 ### **1.3 Regula Falsi and Secant Methods**
 *   **Regula Falsi (False Position):** A bracketing method that uses **linear interpolation**. It joins $f(x_l)$ and $f(x_u)$ with a straight line; the point where this line crosses the x-axis is the root estimate.
-    $$x_r = x_u - \frac{f(x_u)(x_l - x_u)}{f(x_l) - f(x_u)} \quad$$
+
+    $$x_r = x_u - \frac{f(x_u)(x_l - x_u)}{f(x_l) - f(x_u)}$$
 *   **Secant Method:** An **open method** that uses a similar formula but does **not require the root to be bracketed**. It uses two initial estimates and calculates the slope using a backward finite divided difference.
-    $$x_{i+1} = x_i - \frac{f(x_i)(x_{i-1} - x_i)}{f(x_{i-1}) - f(x_i)} \quad$$
+
+    $$x_{i+1} = x_i - \frac{f(x_i)(x_{i-1} - x_i)}{f(x_{i-1}) - f(x_i)}$$
 > [!Note]
 > Unlike Regula Falsi, the Secant method can occasionally **diverge** if initial guesses are poor.
 
@@ -46,7 +57,8 @@ The most widely used root-locating formula. It uses a **tangent line** at an ini
 ### **1.5 Fixed Point Iteration Method**
 Also known as one-point iteration, it involves rearranging $f(x) = 0$ into the form **$x = g(x)$**.
 *   **Formula:**
-    $$x_{i+1} = g(x_i) \quad$$
+
+    $$x_{i+1} = g(x_i)$$
 *   **Convergence Requirement:** The method converges if the magnitude of the slope $|g'(x)| < 1$ in the region of interest. It typically exhibits **linear convergence**.
 
 ### **1.6 Comparison of the Methods**
