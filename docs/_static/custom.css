@@ -1,0 +1,275 @@
+/* Professional Numerical Methods Documentation Styling */
+
+:root {
+    --primary-color: #2c3e50;
+    --accent-color: #3498db;
+    --text-color: #2c3e50;
+    --light-bg: #f8f9fa;
+    --border-color: #e1e4e8;
+}
+
+/* Sidebar Styling */
+.wy-side-nav-search {
+    background: var(--primary-color);
+    border-bottom: 3px solid var(--accent-color);
+}
+
+.wy-side-nav-search > a {
+    color: white;
+    font-weight: 600;
+    font-size: 1.1em;
+}
+
+.wy-side-nav-search .wy-dropdown > a {
+    color: #ecf0f1;
+}
+
+.wy-side-nav-search input[type="text"] {
+    border-radius: 4px;
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+}
+
+.wy-side-nav-search input[type="text"]::placeholder {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+/* Navigation Links */
+.wy-nav-side .wy-nav-content-wrap {
+    background: linear-gradient(180deg, #f8f9fa 0%, #ffffff 100%);
+}
+
+.wy-menu.wy-menu-vertical li.toctree-l1 > a {
+    color: var(--text-color);
+    font-weight: 500;
+    padding: 0.8em 1.27em;
+    border-left: 3px solid transparent;
+    transition: all 0.2s ease;
+}
+
+.wy-menu.wy-menu-vertical li.toctree-l1 > a:hover {
+    background: var(--light-bg);
+    border-left-color: var(--accent-color);
+    color: var(--accent-color);
+}
+
+.wy-menu.wy-menu-vertical li.current > a {
+    background: var(--light-bg);
+    border-left-color: var(--accent-color);
+    color: var(--accent-color);
+    font-weight: 600;
+}
+
+.wy-menu.wy-menu-vertical li li > a {
+    color: #555;
+    font-size: 0.95em;
+    padding: 0.6em 2em;
+}
+
+.wy-menu.wy-menu-vertical li li.current > a {
+    color: var(--accent-color);
+    background: rgba(52, 152, 219, 0.1);
+}
+
+/* Main Content Area */
+.wy-nav-content {
+    background: white;
+}
+
+.rst-content {
+    color: var(--text-color);
+    line-height: 1.7;
+}
+
+/* Headings */
+.rst-content h1,
+.rst-content h2,
+.rst-content h3,
+.rst-content h4,
+.rst-content h5 {
+    color: var(--primary-color);
+    font-weight: 600;
+    border-bottom: none;
+    margin-top: 1.5em;
+    margin-bottom: 0.8em;
+}
+
+.rst-content h1 {
+    font-size: 2.2em;
+    padding-bottom: 0.5em;
+    border-bottom: 3px solid var(--accent-color);
+}
+
+.rst-content h2 {
+    font-size: 1.8em;
+    border-bottom: 2px solid var(--border-color);
+    padding-bottom: 0.4em;
+}
+
+.rst-content h3 {
+    font-size: 1.4em;
+}
+
+.rst-content h4 {
+    font-size: 1.1em;
+}
+
+/* Code and Math Styling */
+.rst-content code {
+    background: var(--light-bg);
+    color: #d63384;
+    padding: 0.2em 0.4em;
+    border-radius: 3px;
+    font-size: 0.9em;
+}
+
+.rst-content code.xref,
+.rst-content a code {
+    background: transparent;
+    color: var(--accent-color);
+}
+
+.rst-content pre {
+    background: var(--primary-color);
+    color: #ecf0f1;
+    border: none;
+    border-radius: 4px;
+    padding: 1em;
+}
+
+/* Tables */
+.rst-content table.docutils {
+    border: 1px solid var(--border-color);
+    border-collapse: collapse;
+}
+
+.rst-content table.docutils th {
+    background: var(--light-bg);
+    color: var(--primary-color);
+    font-weight: 600;
+    border: 1px solid var(--border-color);
+}
+
+.rst-content table.docutils td {
+    border: 1px solid var(--border-color);
+    padding: 0.8em;
+}
+
+/* Lists */
+.rst-content ol,
+.rst-content ul {
+    margin-bottom: 1.5em;
+}
+
+.rst-content li {
+    margin-bottom: 0.5em;
+    line-height: 1.6;
+}
+
+/* Notes and Admonitions */
+.rst-content .note,
+.rst-content .attention,
+.rst-content .caution,
+.rst-content .danger,
+.rst-content .error,
+.rst-content .hint,
+.rst-content .important,
+.rst-content .tip,
+.rst-content .warning {
+    border-left: 4px solid var(--accent-color);
+    background: rgba(52, 152, 219, 0.05);
+    padding: 1em;
+    margin: 1em 0;
+    border-radius: 4px;
+}
+
+.rst-content .admonition-title {
+    font-weight: 600;
+    color: var(--accent-color);
+}
+
+/* Links */
+.rst-content a {
+    color: var(--accent-color);
+    text-decoration: none;
+    border-bottom: 1px solid rgba(52, 152, 219, 0.3);
+    transition: all 0.2s ease;
+}
+
+.rst-content a:hover {
+    color: #2980b9;
+    border-bottom-color: var(--accent-color);
+}
+
+/* Blockquotes */
+.rst-content blockquote {
+    border-left: 4px solid var(--accent-color);
+    background: var(--light-bg);
+    padding: 0.8em 1em;
+    margin: 1em 0;
+    border-radius: 4px;
+}
+
+/* Breadcrumbs */
+.breadcrumbs {
+    background: var(--light-bg);
+    padding: 0.8em 1em;
+    border-bottom: 1px solid var(--border-color);
+    border-radius: 4px;
+    margin-bottom: 1.5em;
+}
+
+.breadcrumbs a {
+    color: var(--accent-color);
+}
+
+/* Footer */
+.rst-footer-buttons {
+    margin-top: 2em;
+}
+
+.rst-footer-buttons a {
+    background: var(--accent-color);
+    color: white;
+    border: none;
+    padding: 0.7em 1.5em;
+    border-radius: 4px;
+    transition: background 0.2s ease;
+}
+
+.rst-footer-buttons a:hover {
+    background: #2980b9;
+    border: none;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .rst-content h1 {
+        font-size: 1.8em;
+    }
+
+    .rst-content h2 {
+        font-size: 1.4em;
+    }
+
+    .rst-content code {
+        font-size: 0.85em;
+    }
+
+    .wy-menu.wy-menu-vertical li > a {
+        padding: 0.6em 1em;
+    }
+}
+
+/* Print Styles */
+@media print {
+    .wy-nav-side,
+    .rst-versions,
+    .rst-footer-buttons {
+        display: none;
+    }
+
+    .wy-nav-content {
+        margin: 0;
+    }
+}
