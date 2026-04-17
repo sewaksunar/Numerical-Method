@@ -6,16 +6,16 @@ Welcome to the **Numerical Methods Course Notes**. This site contains comprehens
 :maxdepth: 2
 :caption: Course Content
 
-chapter1
-chapter2
-chapter3
+ch1
+ch2
+ch3
 ```
 
 ## Quick Navigation
 
-- **[Chapter 1: Solution of Non-Linear Equations](chapter1.md)** - Bisection, Newton-Raphson, Secant methods
-- **[Chapter 2: System of Linear Equations](chapter2.md)** - Gaussian elimination, iterative methods, eigenvalues
-- **[Chapter 3: Interpolation](chapter3.md)** - Lagrange, Newton's divided differences, Stirling's formulas
+- **[Chapter 1: Solution of Non-Linear Equations](ch1.md)** - Bisection, Newton-Raphson, Secant methods
+- **[Chapter 2: System of Linear Equations](ch2.md)** - Gaussian elimination, iterative methods, eigenvalues
+- **[Chapter 3: Interpolation](ch3.md)** - Lagrange, Newton's divided differences, Stirling's formulas
 
 ## About This Course
 
