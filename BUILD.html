@@ -1,0 +1,269 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Building Documentation Locally &mdash; Numerical Methods 1.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="_static/custom.css?v=499e09cc" />
+
+  
+    <link rel="canonical" href="https://sewaksunar.github.io/Numerical-Method/BUILD.html"/>
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=f2a433a1"></script>
+      <script src="_static/doctools.js?v=9bcbadda"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #2c3e50" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            Numerical Methods
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">📚 Course Chapters</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="ch1.html">Chapter 1: Solution of Non-Linear Equations</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="ch1.html#errors-and-accuracy-in-numerical-computations"><strong>1.1 Errors and Accuracy in Numerical Computations</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="ch1.html#bisection-method"><strong>1.2 Bisection Method</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="ch1.html#regula-falsi-and-secant-methods"><strong>1.3 Regula Falsi and Secant Methods</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="ch1.html#newton-raphson-method"><strong>1.4 Newton-Raphson Method</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="ch1.html#fixed-point-iteration-method"><strong>1.5 Fixed Point Iteration Method</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="ch1.html#comparison-of-the-methods"><strong>1.6 Comparison of the Methods</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="ch1.html#solution-of-system-of-non-linear-equations"><strong>1.7 Solution of System of Non-Linear Equations</strong></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="ch2.html">Chapter 2: System of Linear Equations</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="ch2.html#direct-methods"><strong>2.1 Direct Methods</strong></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="ch2.html#gauss-elimination-and-pivoting"><strong>2.1.1 Gauss Elimination and Pivoting</strong></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ch2.html#gauss-jordan-method"><strong>2.1.2 Gauss-Jordan Method</strong></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ch2.html#matrix-inverse-using-gauss-jordan-and-gauss-elimination-methods">2.1.3 Matrix inverse using Gauss Jordan and Gauss elimination methods</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="ch2.html#gauss-jordan-methods">2.1.3.1 Gauss Jordan Methods</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="ch2.html#factorization-methods">2.1.3.2 Factorization methods</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="ch2.html#iterative-methods"><strong>2.2 Iterative Methods</strong></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="ch2.html#jacobis-method-method-of-simultaneous-displacement">2.2.1 Jacobi’s Method (Method of Simultaneous Displacement):</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ch2.html#gauss-seidel-method">2.2.2 Gauss-Seidel Method:</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="ch2.html#eigenvalues-and-eigenvectors-the-power-method"><strong>2.3 Eigenvalues and Eigenvectors (The Power Method)</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="ch2.html#practical-implementation-python"><strong>Practical Implementation (Python)</strong></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="ch3.html">Chapter 3: Interpolation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="ch3.html#introduction">3. Introduction</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="ch3.html#uniqueness-of-interpolation-polynomial">3.1 Uniqueness of Interpolation Polynomial</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ch3.html#interpolation-with-unequally-spaced-intervals">3.2 Interpolation with Unequally Spaced Intervals</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="ch3.html#lagrange-s-interpolation">3.2.1 Lagrange’s Interpolation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ch3.html#newton-s-divided-difference-method">3.2.2 Newton’s Divided Difference Method</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ch3.html#finite-differences-forward-backward-central">3.2.3 Finite Differences (Forward, Backward, Central)</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="ch3.html#forward-difference">3.2.3.1 Forward Difference</a></li>
+<li class="toctree-l5"><a class="reference internal" href="ch3.html#backward-difference">3.2.3.2 Backward Difference</a></li>
+<li class="toctree-l5"><a class="reference internal" href="ch3.html#central-difference">3.2.3.3 Central Difference</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="ch3.html#interpolation-with-equally-spaced-intervals">3.2.4 Interpolation with Equally Spaced Intervals</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="ch3.html#newton-s-forward-and-backward-difference-interpolation">3.2.4.1 Newton’s Forward and Backward Difference Interpolation</a></li>
+<li class="toctree-l5"><a class="reference internal" href="ch3.html#stirling-s-and-bessel-s-central-difference-interpolation">3.2.4.2 Stirling’s and Bessel’s Central Difference Interpolation</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="ch3.html#cubic-spline-interpolation">3.3 Cubic spline interpolation</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="ch3.html#equally-spaced-interval">3.3.1 Equally spaced interval</a></li>
+<li class="toctree-l5"><a class="reference internal" href="ch3.html#unequally-spaced-interval">3.3.2 Unequally spaced interval</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: #2c3e50" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Numerical Methods</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Building Documentation Locally</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section class="tex2jax_ignore mathjax_ignore" id="building-documentation-locally">
+<h1>Building Documentation Locally<a class="headerlink" href="#building-documentation-locally" title="Link to this heading"></a></h1>
+<p>This documentation is built using <strong>Sphinx</strong> with the Read the Docs theme. All LaTeX equations render perfectly using MathJax.</p>
+<section id="prerequisites">
+<h2>Prerequisites<a class="headerlink" href="#prerequisites" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p>Python 3.8+</p></li>
+<li><p>pip (Python package manager)</p></li>
+</ul>
+</section>
+<section id="setup-instructions">
+<h2>Setup Instructions<a class="headerlink" href="#setup-instructions" title="Link to this heading"></a></h2>
+<section id="install-dependencies">
+<h3>1. Install Dependencies<a class="headerlink" href="#install-dependencies" title="Link to this heading"></a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>-r<span class="w"> </span>docs/requirements.txt
+</pre></div>
+</div>
+</section>
+<section id="build-html-documentation">
+<h3>2. Build HTML Documentation<a class="headerlink" href="#build-html-documentation" title="Link to this heading"></a></h3>
+<p>Navigate to the docs folder and build:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>docs
+sphinx-build<span class="w"> </span>-b<span class="w"> </span>html<span class="w"> </span>.<span class="w"> </span>_build/html
+</pre></div>
+</div>
+</section>
+<section id="view-documentation">
+<h3>3. View Documentation<a class="headerlink" href="#view-documentation" title="Link to this heading"></a></h3>
+<p>Open the built documentation in your browser:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Windows</span>
+start<span class="w"> </span>_build/html/index.html
+
+<span class="c1"># macOS</span>
+open<span class="w"> </span>_build/html/index.html
+
+<span class="c1"># Linux</span>
+xdg-open<span class="w"> </span>_build/html/index.html
+</pre></div>
+</div>
+</section>
+</section>
+<section id="automatic-rebuilding">
+<h2>Automatic Rebuilding<a class="headerlink" href="#automatic-rebuilding" title="Link to this heading"></a></h2>
+<p>For development, you can use <code class="docutils literal notranslate"><span class="pre">sphinx-autobuild</span></code> to automatically rebuild when files change:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>sphinx-autobuild
+sphinx-autobuild<span class="w"> </span>.<span class="w"> </span>_build/html
+</pre></div>
+</div>
+<p>Then visit <code class="docutils literal notranslate"><span class="pre">http://localhost:8000</span></code> in your browser.</p>
+</section>
+<section id="file-structure">
+<h2>File Structure<a class="headerlink" href="#file-structure" title="Link to this heading"></a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>docs/
+├── conf.py              # Sphinx configuration
+├── index.md             # Main page
+├── chapter1.md          # Chapter 1: Non-Linear Equations
+├── chapter2.md          # Chapter 2: Linear Systems
+├── chapter3.md          # Chapter 3: Interpolation
+├── requirements.txt     # Python dependencies
+└── .nojekyll           # GitHub Pages configuration
+</pre></div>
+</div>
+</section>
+<section id="github-pages-deployment">
+<h2>GitHub Pages Deployment<a class="headerlink" href="#github-pages-deployment" title="Link to this heading"></a></h2>
+<p>When you push to GitHub (main/master branch), a GitHub Actions workflow automatically:</p>
+<ol class="arabic simple">
+<li><p>Builds the documentation with Sphinx</p></li>
+<li><p>Deploys it to GitHub Pages</p></li>
+<li><p>Makes it available at <code class="docutils literal notranslate"><span class="pre">https://&lt;username&gt;.github.io/&lt;repo&gt;/</span></code></p></li>
+</ol>
+<p>Enable GitHub Pages in your repository settings (if not already enabled).</p>
+</section>
+<section id="adding-new-chapters">
+<h2>Adding New Chapters<a class="headerlink" href="#adding-new-chapters" title="Link to this heading"></a></h2>
+<ol class="arabic simple">
+<li><p>Create a new <code class="docutils literal notranslate"><span class="pre">.md</span></code> file in the <code class="docutils literal notranslate"><span class="pre">docs/</span></code> folder</p></li>
+<li><p>Add it to the <code class="docutils literal notranslate"><span class="pre">toctree</span></code> in <code class="docutils literal notranslate"><span class="pre">index.md</span></code>:</p></li>
+</ol>
+<div class="highlight-markdown notranslate"><div class="highlight"><pre><span></span>```{toctree}
+:maxdepth: 2
+:caption: Course Content
+
+chapter1
+chapter2
+chapter3
+chapter4  # New chapter
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
+3. Push to trigger automatic rebuild
+
+## Troubleshooting
+
+**Issue:** Sphinx can&#39;t find myst_parser  
+**Solution:** Make sure you installed `myst-parser`: `pip install myst-parser`
+
+**Issue:** Math equations not rendering  
+**Solution:** The MathJax CDN link is in `conf.py`. Ensure you have internet connectivity.
+
+**Issue:** `.md` files not converting properly  
+**Solution:** Check file format in `conf.py` - ensure `source_suffix` includes `.md: &#39;markdown&#39;`
+
+---
+
+For more Sphinx documentation, visit: https://www.sphinx-doc.org/
+</pre></div>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026, Course Materials.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

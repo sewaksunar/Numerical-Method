@@ -1,0 +1,558 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Chapter 3: Interpolation &mdash; Numerical Methods 1.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="_static/custom.css?v=499e09cc" />
+
+  
+    <link rel="canonical" href="https://sewaksunar.github.io/Numerical-Method/ch3.html"/>
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=f2a433a1"></script>
+      <script src="_static/doctools.js?v=9bcbadda"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+      <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="Chapter 2: System of Linear Equations" href="ch2.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #2c3e50" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            Numerical Methods
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">📚 Course Chapters</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="ch1.html">Chapter 1: Solution of Non-Linear Equations</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="ch1.html#errors-and-accuracy-in-numerical-computations"><strong>1.1 Errors and Accuracy in Numerical Computations</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="ch1.html#bisection-method"><strong>1.2 Bisection Method</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="ch1.html#regula-falsi-and-secant-methods"><strong>1.3 Regula Falsi and Secant Methods</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="ch1.html#newton-raphson-method"><strong>1.4 Newton-Raphson Method</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="ch1.html#fixed-point-iteration-method"><strong>1.5 Fixed Point Iteration Method</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="ch1.html#comparison-of-the-methods"><strong>1.6 Comparison of the Methods</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="ch1.html#solution-of-system-of-non-linear-equations"><strong>1.7 Solution of System of Non-Linear Equations</strong></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="ch2.html">Chapter 2: System of Linear Equations</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="ch2.html#direct-methods"><strong>2.1 Direct Methods</strong></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="ch2.html#gauss-elimination-and-pivoting"><strong>2.1.1 Gauss Elimination and Pivoting</strong></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ch2.html#gauss-jordan-method"><strong>2.1.2 Gauss-Jordan Method</strong></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ch2.html#matrix-inverse-using-gauss-jordan-and-gauss-elimination-methods">2.1.3 Matrix inverse using Gauss Jordan and Gauss elimination methods</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="ch2.html#gauss-jordan-methods">2.1.3.1 Gauss Jordan Methods</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="ch2.html#factorization-methods">2.1.3.2 Factorization methods</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="ch2.html#iterative-methods"><strong>2.2 Iterative Methods</strong></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="ch2.html#jacobis-method-method-of-simultaneous-displacement">2.2.1 Jacobi’s Method (Method of Simultaneous Displacement):</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ch2.html#gauss-seidel-method">2.2.2 Gauss-Seidel Method:</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="ch2.html#eigenvalues-and-eigenvectors-the-power-method"><strong>2.3 Eigenvalues and Eigenvectors (The Power Method)</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="ch2.html#practical-implementation-python"><strong>Practical Implementation (Python)</strong></a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Chapter 3: Interpolation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#introduction">3. Introduction</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#uniqueness-of-interpolation-polynomial">3.1 Uniqueness of Interpolation Polynomial</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#interpolation-with-unequally-spaced-intervals">3.2 Interpolation with Unequally Spaced Intervals</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#lagrange-s-interpolation">3.2.1 Lagrange’s Interpolation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#newton-s-divided-difference-method">3.2.2 Newton’s Divided Difference Method</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#finite-differences-forward-backward-central">3.2.3 Finite Differences (Forward, Backward, Central)</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="#forward-difference">3.2.3.1 Forward Difference</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#backward-difference">3.2.3.2 Backward Difference</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#central-difference">3.2.3.3 Central Difference</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#interpolation-with-equally-spaced-intervals">3.2.4 Interpolation with Equally Spaced Intervals</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="#newton-s-forward-and-backward-difference-interpolation">3.2.4.1 Newton’s Forward and Backward Difference Interpolation</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#stirling-s-and-bessel-s-central-difference-interpolation">3.2.4.2 Stirling’s and Bessel’s Central Difference Interpolation</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#cubic-spline-interpolation">3.3 Cubic spline interpolation</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="#equally-spaced-interval">3.3.1 Equally spaced interval</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#unequally-spaced-interval">3.3.2 Unequally spaced interval</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: #2c3e50" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Numerical Methods</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Chapter 3: Interpolation</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section class="tex2jax_ignore mathjax_ignore" id="chapter-3-interpolation">
+<h1>Chapter 3: Interpolation<a class="headerlink" href="#chapter-3-interpolation" title="Link to this heading"></a></h1>
+<section id="introduction">
+<h2>3. Introduction<a class="headerlink" href="#introduction" title="Link to this heading"></a></h2>
+<p>For the given values of function <span class="math notranslate nohighlight">\(f(x)\)</span> at points <span class="math notranslate nohighlight">\(x_{0}, x_{1}, \cdots, x_{n}\)</span> the process of finding approximate values of the function <span class="math notranslate nohighlight">\(f(x)\)</span> for new <span class="math notranslate nohighlight">\(x\)</span>’s between <span class="math notranslate nohighlight">\(x_{0}\)</span> and <span class="math notranslate nohighlight">\(x_{n}\)</span> is called interpolation.</p>
+<p>Consider the points <span class="math notranslate nohighlight">\((x_{0}, f_{0}), (x_{1}, f_{1}), \cdots, (x_{n}, f_{n})\)</span>. We find a polynomial <span class="math notranslate nohighlight">\(p_n(x)\)</span> of degree <span class="math notranslate nohighlight">\(n\)</span> or less than assumes the values <span class="math notranslate nohighlight">\(p_n({x_0}) = f_{0},\quad p_n({x_1}) = f_{1} \quad, \cdots, \quad p_n({x_n}) = f_{n}\)</span>.</p>
+<p>The polynomial <span class="math notranslate nohighlight">\(p_{n}(x)\)</span> is called the interpolation polynomial and the points <span class="math notranslate nohighlight">\(x_{0}, x_{1}, \cdots, x_{n}\)</span> are called the nodes.</p>
+<section id="uniqueness-of-interpolation-polynomial">
+<h3>3.1 Uniqueness of Interpolation Polynomial<a class="headerlink" href="#uniqueness-of-interpolation-polynomial" title="Link to this heading"></a></h3>
+<p>Weierstrass Approximation Theorem states: for any continuous function <span class="math notranslate nohighlight">\(f(x)\)</span> in an interval <span class="math notranslate nohighlight">\(a \le x \le b\)</span> and error <span class="math notranslate nohighlight">\(\epsilon &gt; 0\)</span> there is a polynomial <span class="math notranslate nohighlight">\(p_n(x)\)</span> of sufficiently higher degree <span class="math notranslate nohighlight">\(n\)</span> such that <span class="math notranslate nohighlight">\(|f(x)-p_{n}(x)| &lt; \epsilon\)</span> for all <span class="math notranslate nohighlight">\(x\)</span> in <span class="math notranslate nohighlight">\([a, b]\)</span>.</p>
+<p>The interpolation polynomial that satisfies <span class="math notranslate nohighlight">\(p_n({x_0}) = f_{0},\quad p_n({x_1}) = f_{1} \quad, \cdots, \quad p_n({x_n}) = f_{n}\)</span> is unique.</p>
+</section>
+<section id="interpolation-with-unequally-spaced-intervals">
+<h3>3.2 Interpolation with Unequally Spaced Intervals<a class="headerlink" href="#interpolation-with-unequally-spaced-intervals" title="Link to this heading"></a></h3>
+<section id="lagrange-s-interpolation">
+<h4>3.2.1 Lagrange’s Interpolation<a class="headerlink" href="#lagrange-s-interpolation" title="Link to this heading"></a></h4>
+<p>Consider a set of <span class="math notranslate nohighlight">\((n+1)\)</span> arbitrary spaced data points <span class="math notranslate nohighlight">\((x_{0}, f_{0}), (x_{1}, f_{1}), \cdots, (x_{n}, f_{n})\)</span>. Then lagrange interpolation polynomial is given by,</p>
+<div class="math notranslate nohighlight">
+\[
+p_{n}(x) = \sum_{i=0}^{n} f_i L_{i}(x)
+\]</div>
+<p>where,</p>
+<div class="math notranslate nohighlight">
+\[
+L_{i}(x) = \prod_{j=0, j \ne i }^{n} \dfrac{x-x_{i}}{x_{i}-x_{j}}
+\]</div>
+</section>
+<section id="newton-s-divided-difference-method">
+<h4>3.2.2 Newton’s Divided Difference Method<a class="headerlink" href="#newton-s-divided-difference-method" title="Link to this heading"></a></h4>
+<p>Consider a set of <span class="math notranslate nohighlight">\((n+1)\)</span> arbitrary spaced data points <span class="math notranslate nohighlight">\((x_{0}, f_{0}), (x_{1}, f_{1}), \cdots, (x_{n}, f_{n})\)</span>. Let:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align*}
+p_{n}(x) &amp;= a_{0} + a_{1}(x-x_{0}) + a_{2}(x-x_{0})(x-x_{1}) + \cdots \\
+&amp; + a_{n}(x-x_{0})(x-x_{1}) \cdots (x-x_{n-1})
+\end{align*}
+\end{split}\]</div>
+<p>be the polynomial that interpolates the above points. Then:</p>
+<div class="math notranslate nohighlight">
+\[
+p_n({x_0}) = f_{0},\quad p_n({x_1}) = f_{1} \quad, \cdots, \quad p_n({x_n}) = f_{n}
+\]</div>
+<p>At point <span class="math notranslate nohighlight">\(x_{0}\)</span>,</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align*}
+p_{n}(x_{0}) &amp;= a_{0} \\
+f_{0} &amp;= a_{0} \\
+f[x_{0}] &amp;= a_{0}
+\end{align*}
+\end{split}\]</div>
+<p>Next point <span class="math notranslate nohighlight">\(x_{1}\)</span>,</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align*}
+p_{n}(x_{1}) &amp;= a_{0} + a_{1}(x_{1} - x_{0})\\
+f_{1} &amp;= f[x_{1}] + a_{1} (x_{1}-x_{0}) \\
+a_{1} &amp;= \frac{f[x_{1}]- f[x_{0}]}{x_{1}-x_{0}}
+\end{align*}
+\end{split}\]</div>
+<p>Next point <span class="math notranslate nohighlight">\(x_{2}\)</span>,</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align*}
+p_{n}(x_{1}) &amp;= a_{0} + a_{1}(x_{1} - x_{0}) + a_{2}(x-x_{0})(x-x_{1}) \\
+a_{2} &amp;= \frac{\frac{f[x_{2}]- f[x_{1}]}{x_{2}-x_{1}}- \frac{f[x_{1}]- f        [x_{0}]}{x_{1}-x_{0}}}{x_{2}-x_{0}} \\
+     &amp;= \frac{f[x_{1}, x_{2}] - f[x_{0}, x_{1}]}{x_{2}-x_{0}} \\
+     &amp;= f[x_{0}, x_{1}, x_{2}]
+\end{align*}
+\end{split}\]</div>
+<p>Similarly,</p>
+<div class="math notranslate nohighlight">
+\[
+a_{n} = f[x_{0}, x_{1}, x_{2}, \dots, x_{n}]
+\]</div>
+<p>Substituting the values of <span class="math notranslate nohighlight">\(a_0, a_1, a_2, \cdots, a_n\)</span> in the polynomial, we get Newton’s divided difference interpolation polynomial:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align*}
+p_{n}(x) &amp;= f[x_{0}] + f[x_{0}, x_{1}](x-x_{0}) + f[x_{0}, x_{1}, x_{2}]  (x-x_{0})(x-x_{1}) + \cdots \\
+            &amp;+ f[x_{0}, x_{1}, x_{2}, \cdots, x_{n}](x-x_{0})(x-x_{1}) \cdots (x-x_{n-1})
+\end{align*}
+\end{split}\]</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><strong>Divided Difference Table</strong></p>
+<p>For points <span class="math notranslate nohighlight">\((x_0,f_0), (x_1,f_1), (x_2,f_2), (x_3,f_3)\)</span> the divided differences are computed in a triangular table. Each entry in a higher column is formed from two entries in the previous column:</p>
+<div class="math notranslate nohighlight">
+\[ \begin{align}\begin{aligned}\begin{split}
+f[x_i] = f_i,
+\qquad
+f[x_i, x_{i+1}] = \frac{f_{i+1} - f_i}{x_{i+1} - x_i}, \\\end{split}\\\qquad
+f[x_i, \dots, x_{i+k}] = \frac{f[x_{i+1}, \dots, x_{i+k}] - f[x_i, \dots, x_{i+k-1}]}{x_{i+k} - x_i}
+\end{aligned}\end{align} \]</div>
+<p>Then the triangular table is:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{array}{c|c|c|c|c}
+x &amp; f(x) &amp; \text{1st DD} &amp; \text{2nd DD} &amp; \text{3rd DD} \\
+\hline
+x_0 &amp; f_0 &amp; &amp; &amp; \\
+&amp; &amp; f[x_0,x_1] &amp; &amp; \\
+x_1 &amp; f_1 &amp; &amp; f[x_0,x_1,x_2] &amp; \\
+&amp; &amp; f[x_1,x_2] &amp; &amp; f[x_0,x_1,x_2,x_3] \\
+x_2 &amp; f_2 &amp; &amp; f[x_1,x_2,x_3] &amp; \\
+&amp; &amp; f[x_2,x_3] &amp; &amp; \\
+x_3 &amp; f_3 &amp; &amp; &amp; \\
+\end{array}
+\end{split}\]</div>
+<p>With the sample values, the table entries become:</p>
+<div class="math notranslate nohighlight">
+\[
+f[x_0,x_1]=\frac{f_1-f_0}{x_1-x_0},\qquad
+f[x_1,x_2]=\frac{f_2-f_1}{x_2-x_1},\qquad
+f[x_2,x_3]=\frac{f_3-f_2}{x_3-x_2}
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+f[x_0,x_1,x_2]=\frac{f[x_1,x_2]-f[x_0,x_1]}{x_2-x_0},\qquad
+f[x_1,x_2,x_3]=\frac{f[x_2,x_3]-f[x_1,x_2]}{x_3-x_1}
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+f[x_0,x_1,x_2,x_3] = \frac{f[x_1,x_2,x_3] - f[x_0,x_1,x_2]}{x_3-x_0}
+\]</div>
+<p>These top-left entries provide the Newton interpolation coefficients: <span class="math notranslate nohighlight">\(a_0 = f[x_0]\)</span>, <span class="math notranslate nohighlight">\(a_1 = f[x_0,x_1]\)</span>, <span class="math notranslate nohighlight">\(a_2 = f[x_0,x_1,x_2]\)</span>, <span class="math notranslate nohighlight">\(a_3 = f[x_0,x_1,x_2,x_3]\)</span>.</p>
+</div>
+</section>
+<section id="finite-differences-forward-backward-central">
+<h4>3.2.3 Finite Differences (Forward, Backward, Central)<a class="headerlink" href="#finite-differences-forward-backward-central" title="Link to this heading"></a></h4>
+<section id="forward-difference">
+<h5>3.2.3.1 Forward Difference<a class="headerlink" href="#forward-difference" title="Link to this heading"></a></h5>
+<p>For equally spaced points with spacing <span class="math notranslate nohighlight">\(h = x_{i+1} - x_i\)</span>, the <strong>forward differences</strong> are:</p>
+<p><strong>First forward difference:</strong></p>
+<div class="math notranslate nohighlight">
+\[\Delta f_i = f_{i+1} - f_i\]</div>
+<p><strong>Second forward difference:</strong></p>
+<div class="math notranslate nohighlight">
+\[\Delta^2 f_i = \Delta f_{i+1} - \Delta f_i = (f_{i+2} - f_{i+1}) - (f_{i+1} - f_i) = f_{i+2} - 2f_{i+1} + f_i\]</div>
+<p><strong><span class="math notranslate nohighlight">\(n\)</span>-th forward difference:</strong></p>
+<div class="math notranslate nohighlight">
+\[\Delta^n f_i = \sum_{k=0}^{n} (-1)^{n-k} \binom{n}{k} f_{i+k}\]</div>
+<p><strong>Forward Difference Table:</strong></p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{array}{c|c|c|c|c}
+x &amp; f(x) &amp; \Delta f &amp; \Delta^2 f &amp; \Delta^3 f \\
+\hline
+x_0 &amp; f_0 &amp; &amp; &amp; \\
+&amp; &amp; \Delta f_0 &amp; &amp; \\
+x_1 &amp; f_1 &amp; &amp; \Delta^2 f_0 &amp; \\
+&amp; &amp; \Delta f_1 &amp; &amp; \Delta^3 f_0 \\
+x_2 &amp; f_2 &amp; &amp; \Delta^2 f_1 &amp; \\
+&amp; &amp; \Delta f_2 &amp; &amp; \\
+x_3 &amp; f_3 &amp; &amp; &amp; \\
+\end{array}
+\end{split}\]</div>
+<p>where <span class="math notranslate nohighlight">\(\Delta f_i = f_{i+1} - f_i\)</span>, <span class="math notranslate nohighlight">\(\Delta^2 f_i = \Delta f_{i+1} - \Delta f_i\)</span>, etc.</p>
+</section>
+<section id="backward-difference">
+<h5>3.2.3.2 Backward Difference<a class="headerlink" href="#backward-difference" title="Link to this heading"></a></h5>
+<p>The <strong>backward differences</strong> are computed from previous values:</p>
+<p><strong>First backward difference:</strong></p>
+<div class="math notranslate nohighlight">
+\[\nabla f_i = f_i - f_{i-1}\]</div>
+<p><strong>Second backward difference:</strong></p>
+<div class="math notranslate nohighlight">
+\[\nabla^2 f_i = \nabla f_i - \nabla f_{i-1} = (f_i - f_{i-1}) - (f_{i-1} - f_{i-2}) = f_i - 2f_{i-1} + f_{i-2}\]</div>
+<p><strong><span class="math notranslate nohighlight">\(n\)</span>-th backward difference:</strong></p>
+<div class="math notranslate nohighlight">
+\[\nabla^n f_i = \sum_{k=0}^{n} (-1)^{k} \binom{n}{k} f_{i-k}\]</div>
+<p><strong>Backward Difference Table:</strong></p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{array}{c|c|c|c|c}
+x &amp; f(x) &amp; \nabla f &amp; \nabla^2 f &amp; \nabla^3 f \\
+\hline
+x_0 &amp; f_0 &amp; &amp; &amp; \\
+&amp; &amp; \nabla f_1 &amp; &amp; \\
+x_1 &amp; f_1 &amp; &amp; \nabla^2 f_2 &amp; \\
+&amp; &amp; \nabla f_2 &amp; &amp; \nabla^3 f_3 \\
+x_2 &amp; f_2 &amp; &amp; \nabla^2 f_3 &amp; \\
+&amp; &amp; \nabla f_3 &amp; &amp; \\
+x_3 &amp; f_3 &amp; &amp; &amp; \\
+\end{array}
+\end{split}\]</div>
+<p>where <span class="math notranslate nohighlight">\(\nabla f_i = f_i - f_{i-1}\)</span>, <span class="math notranslate nohighlight">\(\nabla^2 f_i = \nabla f_i - \nabla f_{i-1}\)</span>, etc.</p>
+</section>
+<section id="central-difference">
+<h5>3.2.3.3 Central Difference<a class="headerlink" href="#central-difference" title="Link to this heading"></a></h5>
+<p>The <strong>central differences</strong> are computed using symmetric values around the point:</p>
+<p><strong>First central difference:</strong>
+$<span class="math notranslate nohighlight">\(\delta f_{i+1/2} = f_{i+1} - f_i\)</span><span class="math notranslate nohighlight">\(
+or equivalently
+\)</span><span class="math notranslate nohighlight">\(\delta f_i = \frac{f_{i+1} - f_{i-1}}{2}\)</span>$</p>
+<p><strong>Second central difference:</strong>
+$<span class="math notranslate nohighlight">\(\delta^2 f_i = f_{i+1} - 2f_i + f_{i-1}\)</span>$</p>
+<p><strong><span class="math notranslate nohighlight">\(n\)</span>-th central difference:</strong>
+$<span class="math notranslate nohighlight">\(\delta^n f_i = \sum_{k=0}^{n} (-1)^{n-k} \binom{n}{k} f_{i+k-n/2}\)</span>$</p>
+<p><strong>Central Difference Table:</strong></p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{array}{c|c|c|c|c}
+x &amp; f(x) &amp; \delta f &amp; \delta^2 f &amp; \delta^3 f \\
+\hline
+x_0 &amp; f_0 &amp; &amp; &amp; \\
+&amp; &amp; \delta f_{1/2} &amp; &amp; \\
+x_1 &amp; f_1 &amp; &amp; \delta^2 f_1 &amp; \\
+&amp; &amp; \delta f_{3/2} &amp; &amp; \delta^3 f_{3/2} \\
+x_2 &amp; f_2 &amp; &amp; \delta^2 f_2 &amp; \\
+&amp; &amp; \delta f_{5/2} &amp; &amp; \\
+x_3 &amp; f_3 &amp; &amp; &amp; \\
+\end{array}
+\end{split}\]</div>
+<p>where <span class="math notranslate nohighlight">\(\delta f_{i+1/2} = f_{i+1} - f_i\)</span> and <span class="math notranslate nohighlight">\(\delta^2 f_i = f_{i+1} - 2f_i + f_{i-1}\)</span>.</p>
+</section>
+</section>
+<section id="interpolation-with-equally-spaced-intervals">
+<h4>3.2.4 Interpolation with Equally Spaced Intervals<a class="headerlink" href="#interpolation-with-equally-spaced-intervals" title="Link to this heading"></a></h4>
+<section id="newton-s-forward-and-backward-difference-interpolation">
+<h5>3.2.4.1 Newton’s Forward and Backward Difference Interpolation<a class="headerlink" href="#newton-s-forward-and-backward-difference-interpolation" title="Link to this heading"></a></h5>
+<p>Let <span class="math notranslate nohighlight">\(y=f(x)\)</span> takes the values <span class="math notranslate nohighlight">\(y_0, y_1, y_2, \cdots, y_n \)</span> corresponding to the equal spaced values <span class="math notranslate nohighlight">\(x_0, x_1, x_2, \cdots, x_n \)</span> spacing factor <span class="math notranslate nohighlight">\(h\)</span>.</p>
+<p>We have, by divided difference formula,</p>
+<div class="math notranslate nohighlight">
+\[
+[x_0, x_1] = \frac{y_1 - y_0}{x_1 - x_0} = \frac{\Delta y_{0}}{h}
+\]</div>
+<p>Similarly,</p>
+<div class="math notranslate nohighlight">
+\[
+[x_0, x_1, x_2, \cdots, x_n] = \frac{\Delta^{2} y_{0}}{n! h^{n}}
+\]</div>
+<p>Then, the Newton’s divided difference formula with <span class="math notranslate nohighlight">\(p = (x - x_0)/h\)</span> reduces to:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align*}
+f(x) &amp;= y_{0} + p \Delta y_{0} + \frac{p(p-1)}{2!} \Delta^2 y_{0} + \frac{p(p-1)(p-2)}{3!} \Delta^2 y_{0} \\
+    &amp;+ \cdots + \frac{p(p-1)(n-2) \cdots (p-(n-1))}{n!} \Delta^2 y_{0} 
+\end{align*}
+\end{split}\]</div>
+<p>which is the <strong>Newton-Gregory forward difference interpolation formula</strong>.</p>
+<p>Similarly, the <strong>Newton-Gregory backward difference interpolation formula</strong> is given by:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align*}
+f(x) &amp;= y_{n} + p \nabla y_{n} + \frac{p(p+1)}{2!} \nabla^2 y_{n} + \frac{p(p+1)(p+2)}{3!} \nabla^2 y_{n} \\
+    &amp;+ \cdots + \frac{p(p+1)(n+2) \cdots (p+(n-1))}{n!} \nabla^2 y_{n} 
+\end{align*}
+\end{split}\]</div>
+<p>where <span class="math notranslate nohighlight">\(
+p = \dfrac{x - x_{n}}{h}
+\)</span></p>
+</section>
+<section id="stirling-s-and-bessel-s-central-difference-interpolation">
+<h5>3.2.4.2 Stirling’s and Bessel’s Central Difference Interpolation<a class="headerlink" href="#stirling-s-and-bessel-s-central-difference-interpolation" title="Link to this heading"></a></h5>
+<p>If <span class="math notranslate nohighlight">\(x_0\)</span> lies centrally and the data are equally spaced with step <span class="math notranslate nohighlight">\(h\)</span>, set</p>
+<div class="math notranslate nohighlight">
+\[
+ p = \frac{x - x_0}{h}.
+\]</div>
+<p><strong>Stirling’s central difference formula</strong> is useful when the interpolation point is close to the central node <span class="math notranslate nohighlight">\(x_0\)</span>. It averages the odd-order central differences and uses even-order central differences directly:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{aligned}
+y_p &amp;= y_0 + p\,\mu \Delta y_0 + \frac{p^{2}}{2!}\,\Delta^{2} y_0 + \frac{p(p^{2}-1)}{3!}\,\mu \Delta^{3} y_0 \\
+&amp;\quad + \frac{p^{2}(p^{2}-1)}{4!}\,\Delta^{4} y_0 + \frac{p(p^{2}-1)(p^{2}-4)}{5!}\,\mu \Delta^{5} y_0 + \cdots
+\end{aligned}
+\end{split}\]</div>
+<p>where</p>
+<div class="math notranslate nohighlight">
+\[
+\mu \Delta y_{0} = \frac{\Delta y_{0} + \Delta y_{-1}}{2}, \qquad
+\mu \Delta^{3} y_{0} = \frac{\Delta^{3} y_{0} + \Delta^{3} y_{-1}}{2}.
+\]</div>
+<p>A Stirling central difference table around <span class="math notranslate nohighlight">\(x_0\)</span> is:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{array}{c|c|c|c|c|c}
+x &amp; y &amp; \Delta y &amp; \Delta^{2} y &amp; \Delta^{3} y &amp; \Delta^{4} y \\
+\hline
+x_{-2} &amp; y_{-2} &amp; &amp; &amp; &amp; \\
+&amp; &amp; \Delta y_{-2} &amp; &amp; &amp; \\
+x_{-1} &amp; y_{-1} &amp; &amp; \Delta^{2} y_{-2} &amp; &amp; \\
+&amp; &amp; \Delta y_{-1} &amp; &amp; \Delta^{3} y_{-2} &amp; \\
+x_{0} &amp; y_{0} &amp; &amp; \Delta^{2} y_{-1} &amp; &amp; \Delta^{4} y_{-2} \\
+&amp; &amp; \Delta y_{0} &amp; &amp; \Delta^{3} y_{-1} &amp; \\
+x_{1} &amp; y_{1} &amp; &amp; \Delta^{2} y_{0} &amp; &amp; \\
+\end{array}
+\end{split}\]</div>
+<p><strong>Bessel’s central difference formula</strong> is used when the interpolation point lies midway between two central nodes, typically between <span class="math notranslate nohighlight">\(x_0\)</span> and <span class="math notranslate nohighlight">\(x_1\)</span>. Let</p>
+<div class="math notranslate nohighlight">
+\[
+ p = \frac{x - x_0}{h} - \frac12.
+\]</div>
+<p>Then</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{aligned}
+y_p &amp;= \frac{y_0 + y_1}{2} + p\,\delta y_{1/2} + \frac{p(p-1)}{2!}\,\delta^{2} y_{1} \\
+&amp;\quad + \frac{p(p^{2}-1)}{3!}\,\delta^{3} y_{1} + \frac{p(p^{2}-1)(p-2)}{4!}\,\delta^{4} y_{1} + \cdots
+\end{aligned}
+\end{split}\]</div>
+<p>where</p>
+<div class="math notranslate nohighlight">
+\[
+\delta y_{1/2} = y_{1} - y_{0}, \qquad
+\delta^{2} y_{1} = y_{2} - 2y_{1} + y_{0}.
+\]</div>
+<p>A Bessel central difference table for values around the midpoint is:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{array}{c|c|c|c|c}
+x &amp; y &amp; \delta y &amp; \delta^{2} y &amp; \delta^{3} y \\
+\hline
+x_0 &amp; y_0 &amp; &amp; &amp; \\
+&amp; &amp; \delta y_{1/2} &amp; &amp; \\
+x_1 &amp; y_1 &amp; &amp; \delta^{2} y_1 &amp; \\
+&amp; &amp; \delta y_{3/2} &amp; &amp; \delta^{3} y_{1} \\
+x_2 &amp; y_2 &amp; &amp; \delta^{2} y_2 &amp; \\
+\end{array}
+\end{split}\]</div>
+<p>Bessel’s table arranges values so that the midpoint difference <span class="math notranslate nohighlight">\(\delta y_{1/2}\)</span> appears between <span class="math notranslate nohighlight">\(y_0\)</span> and <span class="math notranslate nohighlight">\(y_1\)</span>, making the formula accurate for points near the half-step location.</p>
+</section>
+</section>
+<section id="cubic-spline-interpolation">
+<h4>3.3 Cubic spline interpolation<a class="headerlink" href="#cubic-spline-interpolation" title="Link to this heading"></a></h4>
+<section id="equally-spaced-interval">
+<h5>3.3.1 Equally spaced interval<a class="headerlink" href="#equally-spaced-interval" title="Link to this heading"></a></h5>
+<p>Let <span class="math notranslate nohighlight">\( a_0, a_1, a_2, \dots, a_n \)</span> be the second derivatives at <span class="math notranslate nohighlight">\( x_0, x_1, x_2, \dots, x_n \)</span> respectively. For equally spaced points with spacing <span class="math notranslate nohighlight">\(h = x_{i+1}-x_i\)</span>, the natural cubic spline gives a tridiagonal system:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{bmatrix}
+1 &amp; 0 &amp; 0 &amp; \cdots &amp; 0 \\
+h &amp; 2(h+h) &amp; h &amp; \cdots &amp; 0 \\
+0 &amp; h &amp; 2(h+h) &amp; h &amp; 0 \\
+\vdots &amp; \ddots &amp; \ddots &amp; \ddots &amp; \vdots \\
+0 &amp; \cdots &amp; 0 &amp; 0 &amp; 1 \\
+\end{bmatrix}
+\begin{bmatrix}
+a_0 \\
+a_1 \\
+a_2 \\
+\vdots \\
+a_n \\
+\end{bmatrix} 
+= 6
+\begin{bmatrix}
+0 \\
+\frac{y_{2}-2y_{1}+y_{0}}{h^2} \\
+\frac{y_{3}-2y_{2}+y_{1}}{h^2} \\
+\vdots \\
+0 \\
+\end{bmatrix}
+\end{split}\]</div>
+<p>For a natural cubic spline, the endpoint second derivatives are zero:</p>
+<div class="math notranslate nohighlight">
+\[
+a_0 = a_n = 0.
+\]</div>
+<p>On each interval <span class="math notranslate nohighlight">\([x_i, x_{i+1}]\)</span> the spline is</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{aligned}
+s_i(x) &amp;= \frac{a_i}{6h}(x_{i+1}-x)^3 + \frac{a_{i+1}}{6h}(x-x_i)^3 \\
+&amp;\quad + \left(y_i - \frac{a_i h^2}{6} \right) \frac{x_{i+1}-x}{h} + \left(y_{i+1} - \frac{a_{i+1} h^2}{6} \right) \frac{x-x_i}{h}.
+\end{aligned}
+\end{split}\]</div>
+</section>
+<section id="unequally-spaced-interval">
+<h5>3.3.2 Unequally spaced interval<a class="headerlink" href="#unequally-spaced-interval" title="Link to this heading"></a></h5>
+<p>When the nodes are not equally spaced, let <span class="math notranslate nohighlight">\(h_i = x_{i+1}-x_i\)</span> for <span class="math notranslate nohighlight">\(i=0,1,\dots, n-1\)</span>. The natural spline coefficients satisfy:</p>
+<div class="math notranslate nohighlight">
+\[
+ h_{i-1} a_{i-1} + 2(h_{i-1}+h_i) a_i + h_i a_{i+1} = 6\left( \frac{y_{i+1}-y_i}{h_i} - \frac{y_i-y_{i-1}}{h_{i-1}} \right), \qquad i=1,2,\dots,n-1.
+\]</div>
+<p>With natural boundary conditions:</p>
+<div class="math notranslate nohighlight">
+\[
+a_0 = a_n = 0.
+\]</div>
+<p>Each spline piece on <span class="math notranslate nohighlight">\([x_i, x_{i+1}]\)</span> is then:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{aligned}
+s_i(x) &amp;= \frac{a_i}{6h_i}(x_{i+1}-x)^3 + \frac{a_{i+1}}{6h_i}(x-x_i)^3 \\
+&amp;\quad + \left(y_i - \frac{a_i h_i^2}{6} \right) \frac{x_{i+1}-x}{h_i} + \left(y_{i+1} - \frac{a_{i+1} h_i^2}{6} \right) \frac{x-x_i}{h_i}.
+\end{aligned}
+\end{split}\]</div>
+<p>This general unequal-spaced formulation reduces to the equal-spaced formulas when all <span class="math notranslate nohighlight">\(h_i\)</span> are equal.</p>
+</section>
+</section>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="ch2.html" class="btn btn-neutral float-left" title="Chapter 2: System of Linear Equations" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026, Course Materials.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

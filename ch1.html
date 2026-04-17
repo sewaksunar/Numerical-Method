@@ -1,0 +1,351 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Chapter 1: Solution of Non-Linear Equations &mdash; Numerical Methods 1.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="_static/custom.css?v=499e09cc" />
+
+  
+    <link rel="canonical" href="https://sewaksunar.github.io/Numerical-Method/ch1.html"/>
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=f2a433a1"></script>
+      <script src="_static/doctools.js?v=9bcbadda"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+      <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Chapter 2: System of Linear Equations" href="ch2.html" />
+    <link rel="prev" title="Numerical Methods Course" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #2c3e50" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            Numerical Methods
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">📚 Course Chapters</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Chapter 1: Solution of Non-Linear Equations</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#errors-and-accuracy-in-numerical-computations"><strong>1.1 Errors and Accuracy in Numerical Computations</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#bisection-method"><strong>1.2 Bisection Method</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#regula-falsi-and-secant-methods"><strong>1.3 Regula Falsi and Secant Methods</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#newton-raphson-method"><strong>1.4 Newton-Raphson Method</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#fixed-point-iteration-method"><strong>1.5 Fixed Point Iteration Method</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#comparison-of-the-methods"><strong>1.6 Comparison of the Methods</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#solution-of-system-of-non-linear-equations"><strong>1.7 Solution of System of Non-Linear Equations</strong></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="ch2.html">Chapter 2: System of Linear Equations</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="ch2.html#direct-methods"><strong>2.1 Direct Methods</strong></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="ch2.html#gauss-elimination-and-pivoting"><strong>2.1.1 Gauss Elimination and Pivoting</strong></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ch2.html#gauss-jordan-method"><strong>2.1.2 Gauss-Jordan Method</strong></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ch2.html#matrix-inverse-using-gauss-jordan-and-gauss-elimination-methods">2.1.3 Matrix inverse using Gauss Jordan and Gauss elimination methods</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="ch2.html#gauss-jordan-methods">2.1.3.1 Gauss Jordan Methods</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="ch2.html#factorization-methods">2.1.3.2 Factorization methods</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="ch2.html#iterative-methods"><strong>2.2 Iterative Methods</strong></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="ch2.html#jacobis-method-method-of-simultaneous-displacement">2.2.1 Jacobi’s Method (Method of Simultaneous Displacement):</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ch2.html#gauss-seidel-method">2.2.2 Gauss-Seidel Method:</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="ch2.html#eigenvalues-and-eigenvectors-the-power-method"><strong>2.3 Eigenvalues and Eigenvectors (The Power Method)</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="ch2.html#practical-implementation-python"><strong>Practical Implementation (Python)</strong></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="ch3.html">Chapter 3: Interpolation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="ch3.html#introduction">3. Introduction</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="ch3.html#uniqueness-of-interpolation-polynomial">3.1 Uniqueness of Interpolation Polynomial</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ch3.html#interpolation-with-unequally-spaced-intervals">3.2 Interpolation with Unequally Spaced Intervals</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="ch3.html#lagrange-s-interpolation">3.2.1 Lagrange’s Interpolation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ch3.html#newton-s-divided-difference-method">3.2.2 Newton’s Divided Difference Method</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ch3.html#finite-differences-forward-backward-central">3.2.3 Finite Differences (Forward, Backward, Central)</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="ch3.html#forward-difference">3.2.3.1 Forward Difference</a></li>
+<li class="toctree-l5"><a class="reference internal" href="ch3.html#backward-difference">3.2.3.2 Backward Difference</a></li>
+<li class="toctree-l5"><a class="reference internal" href="ch3.html#central-difference">3.2.3.3 Central Difference</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="ch3.html#interpolation-with-equally-spaced-intervals">3.2.4 Interpolation with Equally Spaced Intervals</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="ch3.html#newton-s-forward-and-backward-difference-interpolation">3.2.4.1 Newton’s Forward and Backward Difference Interpolation</a></li>
+<li class="toctree-l5"><a class="reference internal" href="ch3.html#stirling-s-and-bessel-s-central-difference-interpolation">3.2.4.2 Stirling’s and Bessel’s Central Difference Interpolation</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="ch3.html#cubic-spline-interpolation">3.3 Cubic spline interpolation</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="ch3.html#equally-spaced-interval">3.3.1 Equally spaced interval</a></li>
+<li class="toctree-l5"><a class="reference internal" href="ch3.html#unequally-spaced-interval">3.3.2 Unequally spaced interval</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: #2c3e50" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Numerical Methods</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Chapter 1: Solution of Non-Linear Equations</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section class="tex2jax_ignore mathjax_ignore" id="chapter-1-solution-of-non-linear-equations">
+<h1>Chapter 1: Solution of Non-Linear Equations<a class="headerlink" href="#chapter-1-solution-of-non-linear-equations" title="Link to this heading"></a></h1>
+<p>This course module on the <strong>Solution of Non-Linear Equations</strong> covers the fundamental numerical techniques used to find the roots (or zeros) of functions where analytical solutions are difficult or impossible to obtain.</p>
+<section id="errors-and-accuracy-in-numerical-computations">
+<h2><strong>1.1 Errors and Accuracy in Numerical Computations</strong><a class="headerlink" href="#errors-and-accuracy-in-numerical-computations" title="Link to this heading"></a></h2>
+<p>Numerical methods yield <strong>approximate results</strong>, and understanding the associated errors is critical for engineering applications.</p>
+<ul>
+<li><p><strong>Accuracy vs. Precision:</strong> <strong>Accuracy</strong> refers to how closely a computed value agrees with the true value. <strong>Precision</strong> refers to how closely individual computed values agree with each other.</p></li>
+<li><p><strong>True Error (<span class="math notranslate nohighlight">\(E_t\)</span>):</strong> The difference between the true value and the approximation.</p>
+<div class="math notranslate nohighlight">
+\[E_t = \text{true value} - \text{approximation}\]</div>
+</li>
+<li><p><strong>True Percent Relative Error (<span class="math notranslate nohighlight">\(\epsilon_t\)</span>):</strong> Normalises the error to the true value.</p>
+<div class="math notranslate nohighlight">
+\[\epsilon_t = \frac{\text{true error}}{\text{true value}} \times 100\%\]</div>
+</li>
+<li><p><strong>Approximate Percent Relative Error (<span class="math notranslate nohighlight">\(\epsilon_a\)</span>):</strong> Used in iterative methods when the true value is unknown, comparing the current and previous approximations.</p>
+<div class="math notranslate nohighlight">
+\[\epsilon_a = \left| \frac{\text{current approximation} - \text{previous approximation}}{\text{current approximation}} \right| \times 100\%\]</div>
+</li>
+<li><p><strong>Stopping Criterion (<span class="math notranslate nohighlight">\(\epsilon_s\)</span>):</strong> Iterations are terminated when the error falls below a prespecified tolerance.</p>
+<div class="math notranslate nohighlight">
+\[|\epsilon_a| &lt; \epsilon_s\]</div>
+<p>To ensure the result is correct to <span class="math notranslate nohighlight">\(n\)</span> significant figures, use:</p>
+<div class="math notranslate nohighlight">
+\[\epsilon_s = (0.5 \times 10^{2-n})\%\]</div>
+</li>
+<li><p><strong>Sources of Error:</strong></p>
+<ul class="simple">
+<li><p><strong>Round-Off Error:</strong> Due to the computer’s inability to represent certain numbers exactly with a finite number of digits.</p></li>
+<li><p><strong>Truncation Error:</strong> Results from using an approximation in place of an exact mathematical procedure, such as truncating a <strong>Taylor series</strong>.</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="bisection-method">
+<h2><strong>1.2 Bisection Method</strong><a class="headerlink" href="#bisection-method" title="Link to this heading"></a></h2>
+<p>A <strong>bracketing method</strong> based on the Intermediate Value Theorem. If a continuous function <span class="math notranslate nohighlight">\(f(x)\)</span> changes sign over an interval <span class="math notranslate nohighlight">\([x_l, x_u]\)</span>, at least one real root exists between them.</p>
+<ul>
+<li><p><strong>Algorithm:</strong> The interval is repeatedly halved. The root estimate is the midpoint:</p>
+<div class="math notranslate nohighlight">
+\[
+    \begin{align*}
+    x_r = \frac{x_l + x_u}{2}
+    \end{align*}
+    \]</div>
+</li>
+<li><p><strong>Iteration Requirement:</strong> The number of iterations (<span class="math notranslate nohighlight">\(n\)</span>) required to reach a specific absolute error (<span class="math notranslate nohighlight">\(E_{a,d}\)</span>) can be calculated a priori:</p>
+<div class="math notranslate nohighlight">
+\[n = \log_2 \left( \frac{\Delta x_0}{E_{a,d}} \right) \quad \text{where } \Delta x_0 = x_u^0 - x_l^0\]</div>
+</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>It is stable and guaranteed to converge, but it is relatively slow compared to open methods.</p>
+</div>
+</section>
+<section id="regula-falsi-and-secant-methods">
+<h2><strong>1.3 Regula Falsi and Secant Methods</strong><a class="headerlink" href="#regula-falsi-and-secant-methods" title="Link to this heading"></a></h2>
+<ul>
+<li><p><strong>Regula Falsi (False Position):</strong> A bracketing method that uses linear interpolation. It joins <span class="math notranslate nohighlight">\(f(x_l)\)</span> and <span class="math notranslate nohighlight">\(f(x_u)\)</span> with a straight line; the point where this line crosses the x-axis is the root estimate.</p>
+<div class="math notranslate nohighlight">
+\[
+    x_r = x_u - \frac{(x_l - x_u)}{f(x_l) - f(x_u)}f(x_u)
+    \]</div>
+</li>
+<li><p><strong>Secant Method:</strong> An open method that uses a similar formula but does not require the root to be bracketed. It uses two initial estimates and calculates the slope using a backward finite divided difference.</p>
+<div class="math notranslate nohighlight">
+\[
+    x_{i+1} = x_i - \frac{(x_{i-1} - x_i)}{f(x_{i-1}) - f(x_i)}f(x_i)
+    \]</div>
+</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Unlike Regula Falsi, the Secant method can occasionally diverge if initial guesses are poor.</p>
+</div>
+</section>
+<section id="newton-raphson-method">
+<h2><strong>1.4 Newton-Raphson Method</strong><a class="headerlink" href="#newton-raphson-method" title="Link to this heading"></a></h2>
+<p>The most widely used root-locating formula. It uses a tangent line at an initial guess <span class="math notranslate nohighlight">\(x_i\)</span> to find an improved estimate <span class="math notranslate nohighlight">\(x_{i+1}\)</span>.</p>
+<ul>
+<li><p><strong>Formula:</strong></p>
+<div class="math notranslate nohighlight">
+\[
+    x_{i+1} = x_i - \frac{f(x_i)}{f'(x_i)}
+    \]</div>
+</li>
+</ul>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>It is quadratically convergent, meaning the number of significant digits approximately doubles each iteration. However, it requires an analytical derivative and may fail if <span class="math notranslate nohighlight">\(f'(x) \approx 0\)</span>.</p>
+</div>
+</section>
+<section id="fixed-point-iteration-method">
+<h2><strong>1.5 Fixed Point Iteration Method</strong><a class="headerlink" href="#fixed-point-iteration-method" title="Link to this heading"></a></h2>
+<p>Also known as one-point iteration, it involves rearranging <span class="math notranslate nohighlight">\(f(x) = 0\)</span> into the form <span class="math notranslate nohighlight">\(x = g(x)\)</span>.</p>
+<ul>
+<li><p><strong>Formula:</strong></p>
+<div class="math notranslate nohighlight">
+\[x_{i+1} = g(x_i)\]</div>
+</li>
+<li><p><strong>Convergence Requirement:</strong> The method converges if the magnitude of the slope <span class="math notranslate nohighlight">\(|g'(x)| &lt; 1\)</span> in the region of interest. It typically exhibits linear convergence.</p></li>
+</ul>
+</section>
+<section id="comparison-of-the-methods">
+<h2><strong>1.6 Comparison of the Methods</strong><a class="headerlink" href="#comparison-of-the-methods" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p><strong>Bracketing vs. Open-Ended:</strong> Bracketing methods (Bisection, Regula Falsi) are slower but always converge. Open methods (Newton-Raphson, Secant, Fixed Point) are much faster but can diverge.</p></li>
+<li><p><strong>Rates of Convergence:</strong></p>
+<ul>
+<li><p><strong>Bisection:</strong> Linear (Slowest).</p></li>
+<li><p><strong>Fixed Point:</strong> Linear.</p></li>
+<li><p><strong>Newton-Raphson:</strong> Quadratic (Fastest).</p></li>
+<li><p><strong>Secant:</strong> Super-linear (Faster than bisection, slower than NR).</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="solution-of-system-of-non-linear-equations">
+<h2><strong>1.7 Solution of System of Non-Linear Equations</strong><a class="headerlink" href="#solution-of-system-of-non-linear-equations" title="Link to this heading"></a></h2>
+<ul>
+<li><p><strong>1.7.1 Direct Approach (Fixed Point):</strong> The single-variable method is extended by solving each equation in a system for a different unknown. Convergence is highly dependent on how the equations are formulated.</p></li>
+<li><p><strong>1.7.2 Newton-Raphson Method for Systems:</strong> Uses a <strong>Jacobian matrix</strong> of partial derivatives to solve multiple equations simultaneously.
+For a two-equation system <span class="math notranslate nohighlight">\(f(x,y)=0\)</span> and <span class="math notranslate nohighlight">\(g(x,y)=0\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+    \begin{aligned}
+    x_{i+1} &amp;= x_i - \frac{f_i \dfrac{\partial g_i}{\partial y} - g_i \dfrac{\partial f_i}{\partial y}}{J(f_i, g_i)} \\
+    y_{i+1} &amp;= y_i - \dfrac{g_i \dfrac{\partial f_i}{\partial x} - f_i \dfrac{\partial g_i}{\partial x}}{J(f_i, g_i)}
+    \end{aligned}
+    \end{split}\]</div>
+<p>Where the <strong>Jacobian (<span class="math notranslate nohighlight">\(J\)</span>)</strong> is:</p>
+<div class="math notranslate nohighlight">
+\[
+    J = \frac{\partial f_i}{\partial x} \frac{\partial g_i}{\partial y} - \frac{\partial f_i}{\partial y} \frac{\partial g_i}{\partial x}
+    \]</div>
+</li>
+</ul>
+<p>For solving a system of two non-linear equations, such as <span class="math notranslate nohighlight">\(f(x, y) = 0\)</span> and <span class="math notranslate nohighlight">\(g(x, y) = 0\)</span>, the <strong>Newton-Raphson method</strong> can be expressed concisely in <strong>matrix form</strong> using a multi-variable Taylor series expansion.</p>
+<ol class="arabic simple">
+<li><p>The Jacobian Matrix**
+The core of the multi-equation Newton-Raphson method is the <strong>Jacobian matrix</strong> (denoted as <span class="math notranslate nohighlight">\([J]\)</span> or <span class="math notranslate nohighlight">\([J]\)</span>), which consists of the partial derivatives of the equations with respect to each unknown. For two equations, the matrix is:</p></li>
+</ol>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+[J] = \begin{bmatrix}
+\frac{\partial f_i}{\partial x} &amp; \frac{\partial f_i}{\partial y} \\
+\frac{\partial g_i}{\partial x} &amp; \frac{\partial g_i}{\partial y}
+\end{bmatrix}
+\end{split}\]</div>
+<p>The determinant of this matrix is referred to as the <strong>Jacobian determinant</strong> (<span class="math notranslate nohighlight">\(J\)</span>):</p>
+<div class="math notranslate nohighlight">
+\[
+J = \frac{\partial f_i}{\partial x} \frac{\partial g_i}{\partial y} - \frac{\partial f_i}{\partial y} \frac{\partial g_i}{\partial x}
+\]</div>
+<ol class="arabic simple" start="2">
+<li><p>The Matrix Update Equation**
+The relationship to determine the refined estimates <span class="math notranslate nohighlight">\(\{X_{i+1}\}\)</span> from the current estimates <span class="math notranslate nohighlight">\(\{X_i\}\)</span> is represented as a set of linear simultaneous equations:</p></li>
+</ol>
+<div class="math notranslate nohighlight">
+\[[J]\{X_{i+1}\} = -\{F_i\} + [J]\{X_i\}\]</div>
+<p>Where:
+<span class="math notranslate nohighlight">\(\{X_i\} = \begin{bmatrix} x_i \\ y_i \end{bmatrix}\)</span>,
+<span class="math notranslate nohighlight">\(\{X_{i+1}\} = \begin{bmatrix} x_{i+1} \\ y_{i+1} \end{bmatrix}\)</span>,
+<span class="math notranslate nohighlight">\(\{F_i\} = \begin{bmatrix} u(x_i, y_i) \\ v(x_i, y_i) \end{bmatrix}\)</span>.</p>
+<ol class="arabic simple" start="3">
+<li><p>Solution via Matrix Inversion (Formal Representation)**
+While often solved using techniques like Gauss elimination for efficiency, the formal solution using matrix algebra is:</p></li>
+</ol>
+<div class="math notranslate nohighlight">
+\[
+\{X_{i+1}\} = \{X_i\} - [J]^{-1}\{F_i\}
+\]</div>
+<p>This formula shows that the next estimate is obtained by subtracting the product of the inverse Jacobian and the function vector from the current estimate.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<ul class="simple">
+<li><p><strong>Linear System:</strong> At each iteration, the matrix form represents a set of linear equations that can be solved for the unknowns <span class="math notranslate nohighlight">\(x_{i+1}\)</span> and <span class="math notranslate nohighlight">\(y_{i+1}\)</span>.</p></li>
+<li><p><strong>Convergence:</strong> Like the single-equation version, this method is highly efficient but may diverge if initial guesses are not sufficiently close to the true roots.</p></li>
+<li><p><strong>Shortcomings:</strong> Evaluating the partial derivatives in the Jacobian matrix <span class="math notranslate nohighlight">\([J]\)</span> can sometimes be inconvenient or difficult; in such cases, finite-difference approximations are often used instead.</p></li>
+</ul>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="index.html" class="btn btn-neutral float-left" title="Numerical Methods Course" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="ch2.html" class="btn btn-neutral float-right" title="Chapter 2: System of Linear Equations" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026, Course Materials.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
