@@ -29,7 +29,11 @@ Numerical methods yield **approximate results**, and understanding the associate
 A **bracketing method** based on the Intermediate Value Theorem. If a continuous function $f(x)$ changes sign over an interval $[x_l, x_u]$, at least one real root exists between them.
 *   **Algorithm:** The interval is repeatedly halved. The root estimate is the midpoint:
 
-    $$x_r = \frac{x_l + x_u}{2}$$
+    $$
+    \begin{align*}
+    x_r = \frac{x_l + x_u}{2}
+    \end{align*}
+    $$
 *   **Iteration Requirement:** The number of iterations ($n$) required to reach a specific absolute error ($E_{a,d}$) can be calculated a priori:
 
     $$n = \log_2 \left( \frac{\Delta x_0}{E_{a,d}} \right) \quad \text{where } \Delta x_0 = x_u^0 - x_l^0$$
@@ -40,10 +44,15 @@ It is stable and guaranteed to converge, but it is relatively slow compared to o
 ### **1.3 Regula Falsi and Secant Methods**
 *   **Regula Falsi (False Position):** A bracketing method that uses linear interpolation. It joins $f(x_l)$ and $f(x_u)$ with a straight line; the point where this line crosses the x-axis is the root estimate.
 
-    $$x_r = x_u - \frac{f(x_u)(x_l - x_u)}{f(x_l) - f(x_u)}$$
+    $$
+    x_r = x_u - \frac{(x_l - x_u)}{f(x_l) - f(x_u)}f(x_u)
+    $$
+
 *   **Secant Method:** An open method that uses a similar formula but does not require the root to be bracketed. It uses two initial estimates and calculates the slope using a backward finite divided difference.
 
-    $$x_{i+1} = x_i - \frac{f(x_i)(x_{i-1} - x_i)}{f(x_{i-1}) - f(x_i)}$$
+    $$
+    x_{i+1} = x_i - \frac{(x_{i-1} - x_i)}{f(x_{i-1}) - f(x_i)}f(x_i)
+    $$
 ```{note}
 Unlike Regula Falsi, the Secant method can occasionally diverge if initial guesses are poor.
 ```
@@ -51,7 +60,10 @@ Unlike Regula Falsi, the Secant method can occasionally diverge if initial guess
 ### **1.4 Newton-Raphson Method**
 The most widely used root-locating formula. It uses a tangent line at an initial guess $x_i$ to find an improved estimate $x_{i+1}$.
 *   **Formula:**
-    $$x_{i+1} = x_i - \frac{f(x_i)}{f'(x_i)}$$
+
+    $$
+    x_{i+1} = x_i - \frac{f(x_i)}{f'(x_i)}
+    $$
 
 ```{warning}
 It is quadratically convergent, meaning the number of significant digits approximately doubles each iteration. However, it requires an analytical derivative and may fail if $f'(x) \approx 0$.
@@ -79,17 +91,20 @@ Also known as one-point iteration, it involves rearranging $f(x) = 0$ into the f
 
     $$
     \begin{aligned}
-    x_{i+1} &= x_i - \frac{f_i \frac{\partial g_i}{\partial y} - g_i \frac{\partial f_i}{\partial y}}{J(f_i, g_i)} \\
-    y_{i+1} &= y_i - \frac{g_i \frac{\partial f_i}{\partial x} - f_i \frac{\partial g_i}{\partial x}}{J(f_i, g_i)}
+    x_{i+1} &= x_i - \frac{f_i \dfrac{\partial g_i}{\partial y} - g_i \dfrac{\partial f_i}{\partial y}}{J(f_i, g_i)} \\
+    y_{i+1} &= y_i - \dfrac{g_i \dfrac{\partial f_i}{\partial x} - f_i \dfrac{\partial g_i}{\partial x}}{J(f_i, g_i)}
     \end{aligned}
     $$           
 
     Where the **Jacobian ($J$)** is:
-    $$J = \frac{\partial f_i}{\partial x} \frac{\partial g_i}{\partial y} - \frac{\partial f_i}{\partial y} \frac{\partial g_i}{\partial x}$$
+
+    $$
+    J = \frac{\partial f_i}{\partial x} \frac{\partial g_i}{\partial y} - \frac{\partial f_i}{\partial y} \frac{\partial g_i}{\partial x}
+    $$
 
 For solving a system of two non-linear equations, such as $f(x, y) = 0$ and $g(x, y) = 0$, the **Newton-Raphson method** can be expressed concisely in **matrix form** using a multi-variable Taylor series expansion.
 
-* **1. The Jacobian Matrix**
+1. The Jacobian Matrix**
 The core of the multi-equation Newton-Raphson method is the **Jacobian matrix** (denoted as $[J]$ or $[J]$), which consists of the partial derivatives of the equations with respect to each unknown. For two equations, the matrix is:
 
 $$
@@ -105,20 +120,22 @@ $$
 J = \frac{\partial f_i}{\partial x} \frac{\partial g_i}{\partial y} - \frac{\partial f_i}{\partial y} \frac{\partial g_i}{\partial x}
 $$
 
-* **2. The Matrix Update Equation**
+2. The Matrix Update Equation**
 The relationship to determine the refined estimates $\{X_{i+1}\}$ from the current estimates $\{X_i\}$ is represented as a set of linear simultaneous equations:
 
 $$[J]\{X_{i+1}\} = -\{F_i\} + [J]\{X_i\}$$
 
 Where:
-*   $\{X_i\}$ is the vector of current guesses: $\begin{bmatrix} x_i \\ y_i \end{bmatrix}$.
-*   $\{X_{i+1}\}$ is the vector of the next (improved) estimates: $\begin{bmatrix} x_{i+1} \\ y_{i+1} \end{bmatrix}$.
-*   $\{F_i\}$ is the vector containing the values of the functions evaluated at the current guess: $\begin{bmatrix} u(x_i, y_i) \\ v(x_i, y_i) \end{bmatrix}$.
+$\{X_i\} = \begin{bmatrix} x_i \\ y_i \end{bmatrix}$, 
+$\{X_{i+1}\} = \begin{bmatrix} x_{i+1} \\ y_{i+1} \end{bmatrix}$, 
+$\{F_i\} = \begin{bmatrix} u(x_i, y_i) \\ v(x_i, y_i) \end{bmatrix}$.
 
-* **3. Solution via Matrix Inversion (Formal Representation)**
+3. Solution via Matrix Inversion (Formal Representation)**
 While often solved using techniques like Gauss elimination for efficiency, the formal solution using matrix algebra is:
 
-$$\{X_{i+1}\} = \{X_i\} - [J]^{-1}\{F_i\}$$
+$$
+\{X_{i+1}\} = \{X_i\} - [J]^{-1}\{F_i\}
+$$
 
 This formula shows that the next estimate is obtained by subtracting the product of the inverse Jacobian and the function vector from the current estimate.
 

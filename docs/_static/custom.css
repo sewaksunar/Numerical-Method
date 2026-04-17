@@ -1,10 +1,14 @@
-/* Professional Numerical Methods Documentation Styling */
+/* Professional Numerical Methods Documentation Styling - Dark Theme */
 
 :root {
-    --primary-color: #2c3e50;
-    --accent-color: #3498db;
+    --primary-color: #1a1a2e;
+    --primary-light: #16213e;
+    --accent-color: #00d4ff;
+    --accent-dark: #0099cc;
     --text-color: #2c3e50;
+    --text-light: #666;
     --light-bg: #f8f9fa;
+    --dark-bg: #1a1a2e;
     --border-color: #e1e4e8;
 }
 
@@ -26,49 +30,124 @@
 
 .wy-side-nav-search input[type="text"] {
     border-radius: 4px;
-    background: rgba(255, 255, 255, 0.2);
+    background: rgba(0, 212, 255, 0.2);
     color: white;
+    border: 1px solid var(--accent-color);
 }
 
 .wy-side-nav-search input[type="text"]::placeholder {
     color: rgba(255, 255, 255, 0.6);
 }
 
+.wy-side-nav-search input[type="text"]:focus {
+    background: rgba(0, 212, 255, 0.3);
+    outline: none;
+}
+
 /* Navigation Links */
+.wy-nav-side {
+    background: var(--primary-color);
+}
+
 .wy-nav-side .wy-nav-content-wrap {
-    background: linear-gradient(180deg, #f8f9fa 0%, #ffffff 100%);
+    background: var(--primary-light);
+}
+
+.wy-side-nav-search ~ div {
+    background: var(--primary-color) !important;
+}
+
+.toctree-wrapper {
+    background: var(--primary-color) !important;
+}
+
+.wy-menu {
+    background: var(--primary-color) !important;
 }
 
 .wy-menu.wy-menu-vertical li.toctree-l1 > a {
-    color: var(--text-color);
+    color: #e0e0e0;
     font-weight: 500;
     padding: 0.8em 1.27em;
     border-left: 3px solid transparent;
-    transition: all 0.2s ease;
 }
 
 .wy-menu.wy-menu-vertical li.toctree-l1 > a:hover {
-    background: var(--light-bg);
+    background: rgba(0, 212, 255, 0.15);
     border-left-color: var(--accent-color);
     color: var(--accent-color);
 }
 
 .wy-menu.wy-menu-vertical li.current > a {
-    background: var(--light-bg);
+    background: rgba(0, 212, 255, 0.1);
     border-left-color: var(--accent-color);
     color: var(--accent-color);
     font-weight: 600;
 }
 
+.wy-menu.wy-menu-vertical li.toctree-l1.current {
+    background: var(--primary-color) !important;
+}
+
+.wy-menu.wy-menu-vertical li.toctree-l1.current > ul {
+    background: var(--primary-color) !important;
+}
+
+.wy-menu.wy-menu-vertical > ul {
+    background: var(--primary-color) !important;
+}
+
+.wy-menu.wy-menu-vertical li ul {
+    background: var(--primary-color) !important;
+}
+
+.wy-menu.wy-menu-vertical li li {
+    background: var(--primary-color) !important;
+}
+
+.wy-menu.wy-menu-vertical li li ul {
+    background: var(--primary-color) !important;
+}
+
 .wy-menu.wy-menu-vertical li li > a {
-    color: #555;
+    color: #b0b0b0;
     font-size: 0.95em;
     padding: 0.6em 2em;
+    font-weight: 500;
+    background: var(--primary-color) !important;
+}
+
+.wy-menu.wy-menu-vertical li li > a:hover {
+    color: var(--accent-color);
+    background: rgba(0, 212, 255, 0.08) !important;
 }
 
 .wy-menu.wy-menu-vertical li li.current > a {
     color: var(--accent-color);
-    background: rgba(52, 152, 219, 0.1);
+    background: rgba(0, 212, 255, 0.08) !important;
+    font-weight: 600;
+}
+
+.wy-menu.wy-menu-vertical .caption {
+    background: var(--primary-color) !important;
+    color: #00d4ff;
+}
+
+.wy-menu.wy-menu-vertical p.caption {
+    background: var(--primary-color) !important;
+    color: #00d4ff;
+    margin: 1.2em 0 0.5em 0;
+}
+}
+
+.wy-menu.wy-menu-vertical li li li > a {
+    color: #909090;
+    font-size: 0.9em;
+    padding: 0.5em 3em;
+}
+
+.wy-menu.wy-menu-vertical li li li > a:hover {
+    color: var(--accent-color);
 }
 
 /* Main Content Area */
@@ -130,9 +209,9 @@
 }
 
 .rst-content pre {
-    background: var(--primary-color);
+    background: var(--primary-light);
     color: #ecf0f1;
-    border: none;
+    border: 1px solid var(--accent-color);
     border-radius: 4px;
     padding: 1em;
 }
@@ -144,15 +223,23 @@
 }
 
 .rst-content table.docutils th {
-    background: var(--light-bg);
-    color: var(--primary-color);
+    background: var(--primary-light);
+    color: var(--accent-color);
     font-weight: 600;
-    border: 1px solid var(--border-color);
+    border: 1px solid var(--accent-color);
 }
 
 .rst-content table.docutils td {
     border: 1px solid var(--border-color);
     padding: 0.8em;
+}
+
+.rst-content table.docutils tr:nth-child(even) {
+    background: #f9f9fb;
+}
+
+.rst-content table.docutils tr:hover {
+    background: #f0f4f8;
 }
 
 /* Lists */
@@ -177,7 +264,7 @@
 .rst-content .tip,
 .rst-content .warning {
     border-left: 4px solid var(--accent-color);
-    background: rgba(52, 152, 219, 0.05);
+    background: rgba(0, 212, 255, 0.05);
     padding: 1em;
     margin: 1em 0;
     border-radius: 4px;
@@ -192,12 +279,11 @@
 .rst-content a {
     color: var(--accent-color);
     text-decoration: none;
-    border-bottom: 1px solid rgba(52, 152, 219, 0.3);
-    transition: all 0.2s ease;
+    border-bottom: 1px solid rgba(0, 212, 255, 0.3);
 }
 
 .rst-content a:hover {
-    color: #2980b9;
+    color: var(--accent-dark);
     border-bottom-color: var(--accent-color);
 }
 
@@ -226,20 +312,60 @@
 /* Footer */
 .rst-footer-buttons {
     margin-top: 2em;
+    display: flex;
+    gap: 1em;
 }
 
 .rst-footer-buttons a {
     background: var(--accent-color);
-    color: white;
+    color: var(--primary-color);
     border: none;
     padding: 0.7em 1.5em;
     border-radius: 4px;
-    transition: background 0.2s ease;
+    font-weight: 600;
+    text-decoration: none;
+    display: inline-block;
+    outline: none;
 }
 
 .rst-footer-buttons a:hover {
-    background: #2980b9;
-    border: none;
+    background: var(--accent-dark);
+    color: white;
+    outline: none;
+}
+
+.rst-footer-buttons a:active {
+    outline: none;
+}
+
+/* Remove bounce effects from buttons */
+a.btn, 
+.rst-footer-buttons a,
+button,
+input[type="button"],
+input[type="submit"] {
+    transform: none !important;
+}
+
+a.btn:hover,
+.rst-footer-buttons a:hover,
+button:hover,
+input[type="button"]:hover,
+input[type="submit"]:hover {
+    transform: none !important;
+    box-shadow: none !important;
+}
+
+/* Navigation buttons (Previous/Next) */
+.btn-neutral {
+    background: var(--accent-color) !important;
+    color: var(--primary-color) !important;
+    border: none !important;
+}
+
+.btn-neutral:hover {
+    background: var(--accent-dark) !important;
+    color: white !important;
 }
 
 /* Responsive Design */

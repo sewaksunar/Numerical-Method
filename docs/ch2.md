@@ -9,6 +9,7 @@ Direct methods compute the solution in a finite number of operations. The genera
 This method reduces the system to an **upper triangular form** through forward elimination and then solves for unknowns via **back substitution**.
 *   **Forward Elimination:** The objective is to eliminate $x_1$ from the second to the $n$th equation, then $x_2$ from the third to $n$th, and so on.
     *   **Multiplier formula:** 
+    
     $$
     \begin{align*}
     f_{ik} = \frac{a_{ik}} {a_{kk}}
@@ -16,41 +17,41 @@ This method reduces the system to an **upper triangular form** through forward e
     $$
 
     *   **Row transformation:** 
-    $$
-    \begin{align*}
-    a_{ij}^{new} = a_{ij} - f_{ik} \cdot a_{kj}
-    \end{align*}
-    $$
-
-    and 
 
     $$
     \begin{align*}
-    b_i^{new} = b_i - f_{ik} \cdot b_k
+    a_{ij}^{new} &= a_{ij} - f_{ik} \cdot a_{kj} \\
+    b_i^{new} &= b_i - f_{ik} \cdot b_k
     \end{align*}
     $$
 
 *   **Back Substitution:** Once the matrix is triangular, unknowns are solved from the bottom up.
     *   **Formula:** 
+
     $$
-    x_n = \frac{b_n}{a_{nn}} 
-    $$ 
-    and 
-    $$
-    x_i = \frac{b_i - \sum_{j=i+1}^n a_{ij}x_j}{a_{ii}}
+    \begin{align*}
+    x_n &= \frac{b_n}{a_{nn}}  \\
+    x_i &= \frac{b_i - \sum_{j=i+1}^n a_{ij}x_j}{a_{ii}}
+    \end{align*}
     $$
 
->[!Note]
->**Pivoting Strategies:** "Naive" Gauss elimination fails if a pivot element ($a_{kk}$) is zero. Partial Pivoting involves switching the pivot row with the row below it that contains the largest absolute coefficient in the pivot column to avoid division by zero and minimize round-off errors.
->To get a pivot row or column, you typically follow strategies designed to ensure numerical stability and avoid division by zero during processes like Gauss elimination or LU decomposition.
+```{note}
+**Pivoting Strategies:** "Naive" Gauss elimination fails if a pivot element ($a_{kk}$) is zero. Partial Pivoting involves switching the pivot row with the row below it that contains the largest absolute coefficient in the pivot column to avoid division by zero and minimize round-off errors.
+To get a pivot row or column, you typically follow strategies designed to ensure numerical stability and avoid division by zero during processes like Gauss elimination or LU decomposition.
 
+ **Summary Table for Linear Algebra**
 
-##### **Summary Table for Linear Algebra**
-| Strategy | Search Area | Objective |
-| :--- | :--- | :--- |
-| **Naive** | None (uses current diagonal) | Speed (but unstable if diagonal is 0) |
-| **Partial** | Column below current diagonal | Largest absolute value in column |
-| **Complete** | Entire remaining submatrix | Largest absolute value in the submatrix |
+$$
+\begin{array}{c|c|c}
+\text{Strategy} & \text{Search Area} & \text{Objective} \\
+\hline
+\textbf{Naive} & \text{None (uses current diagonal)} & \text{Speed (but unstable if diagonal is 0)} \\
+\textbf{Partial} & \text{Column below current diagonal} & \text{Largest absolute value in column} \\
+\textbf{Complete} & \text{Entire remaining submatrix} & \text{Largest absolute value in the submatrix} \\
+\end{array}
+$$
+
+```
 
 
 #### **2.1.2 Gauss-Jordan Method**
@@ -73,12 +74,12 @@ $$
 **Method:** Consider the system of linear equations:
 
 $$
-    \begin{aligned}
+    \begin{align*}
     a_{11} x_1 + a_{12} x_2 + \cdots + a_{1n} x_n &= b_1 \\
     a_{21} x_1 + a_{22} x_2 + \cdots + a_{2n} x_n &= b_2 \\
     \vdots \\
     a_{n1} x_1 + a_{n2} x_2 + \cdots + a_{nn} x_n &= b_n
-    \end{aligned}
+    \end{align*}
 $$
 
 which can be written as:
@@ -90,7 +91,8 @@ $$
 $$
 where
 
-$
+$$
+\begin{align*}
 [A] = \begin{bmatrix}
 a_{11} & a_{12} & \cdots & a_{1n} \\
 a_{21} & a_{22} & \cdots & a_{2n} \\
@@ -99,17 +101,18 @@ a_{n1} & a_{n2} & \cdots & a_{nn}
 \end{bmatrix}, \qquad
 [X] = \begin{bmatrix} x_1 \\ x_2 \\ \vdots \\ x_n \end{bmatrix}, \qquad
 [B] = \begin{bmatrix} b_1 \\ b_2 \\ \vdots \\ b_n \end{bmatrix}
-$
+\end{align*}
+$$
 
 Then, if $[A] = [L][U]$, the system can be rewritten as:
 
-$
+$$
 \begin{align}
 ([L][U])[X] &= [B] \\
 [L]([U][X]) &= [B] \\
 [L][V] &= [B]
 \end{align}
-$
+$$
 
 where we define $[V] = [U][X]$.
 
@@ -118,7 +121,7 @@ where we define $[V] = [U][X]$.
 2. Solve $[U][X] = [V]$ for $[X]$ (back substitution)
 
 **Example:** Consider a $3 \times 3$ system:
-    $$
+    $
     \begin{align*}
     [A] = \begin{bmatrix}
             a_{11} & a_{12} & a_{13} \\
@@ -126,10 +129,10 @@ where we define $[V] = [U][X]$.
             a_{31} & a_{32} & a_{33}
             \end{bmatrix}
     \end{align*}
-    $$
+    $
 
 **Do-Little's method:**
-    $$
+    $
     \begin{align*}
     [L] = \begin{bmatrix}
             1 & 0 & 0 \\
@@ -142,10 +145,10 @@ where we define $[V] = [U][X]$.
             0 & 0 & u_{33}
             \end{bmatrix}
     \end{align*}
-    $$
+    $
 
 **Crout's method:**
-    $$
+    $
     \begin{align*}
     [L] = \begin{bmatrix}
             l_{11} & 0 & 0 \\
@@ -158,7 +161,7 @@ where we define $[V] = [U][X]$.
             0 & 0 & 1
             \end{bmatrix}
     \end{align*}
-    $$
+    $
 
 
 ---
@@ -168,7 +171,9 @@ Iterative methods start with an initial guess and refine it until the solution c
 
 #### 2.2.1 Jacobi’s Method (Method of Simultaneous Displacement):
 It uses only values from the **previous iteration** to calculate the new set of estimates, waiting until the entire iteration is complete to update variables.
+
 **Iterative formula:**
+
 $$
 \begin{equation}
 x_i = \frac{1}{a_{ii}} \left( b_i - \sum_{j=1, j \neq i}^n a_{ij}x_j \right)
@@ -176,6 +181,7 @@ x_i = \frac{1}{a_{ii}} \left( b_i - \sum_{j=1, j \neq i}^n a_{ij}x_j \right)
 $$
 
 **Convergence Criterion:** Convergence is guaranteed if the matrix is **diagonally dominant**:
+
 $$
 \begin{align*}
 |a_{ii}| > \sum_{j=1, j \neq i}^n |a_{ij}|
@@ -186,6 +192,7 @@ $$
 The most common iterative technique, which **immediately uses the latest available estimates** for each unknown as they are computed.
 
 If $x = x_{1}^{(n)}, x_{2}^{(n)}, x_{3}^{(n)}, \cdots, x_{n}^{(n)}$ be the $n^{th}$ approximation to the system (2), then the $ (n+1)^{th}$ approximation to the root is given by, 
+
 $$
 \begin{align*}
 x_{1}^{(n+1)} &= \frac{1}{a_{11}}[b_{1} - a_{12}x_{2}^{(n)} - a_{13}x_{3}^{(n)} - \cdots - a_{1n}x_{n}^{(n)}] \\
@@ -200,6 +207,7 @@ $$
 
 
 Given a square matrix $A$. Let $X^{(0)}$ be the initial vector so that 
+
 $$
 \begin{align*}
 Y^{(1)} =AX^{(0)}
@@ -207,23 +215,27 @@ Y^{(1)} =AX^{(0)}
 $$
 
 then, 
+
 $$
 \begin{align*}
-AX^{(0)} = \lambda_{1} X^{(1)} \\ 
-AX^{(1)} = \lambda_{2} X^{(2)} \\ 
-\vdots \\
-AX^{(n)} = \lambda_{n+1} X^{(n+1)} \\ 
+AX^{(0)} &= \lambda_{1} X^{(1)} \\ 
+AX^{(1)} &= \lambda_{2} X^{(2)} \\ 
+        & \vdots \\
+AX^{(n)} &= \lambda_{n+1} X^{(n+1)} \\ 
 \end{align*}
 $$
+
 Which can be written, 
+
 $$
 \begin{align*}
-X^{(1)} = \frac{1}{k_{1}}Y^{(1)} \\ 
-X^{(2)} = \frac{1}{k_{2}} X^{(2)} \\ 
-\vdots \\
-X^{(n)} = \frac{1}{k_{n}} X^{(n)} \\ 
+X^{(1)} &= \frac{1}{k_{1}}Y^{(1)} \\ 
+X^{(2)} &= \frac{1}{k_{2}} X^{(2)} \\ 
+        & \vdots \\
+X^{(n)} &= \frac{1}{k_{n}} X^{(n)} \\ 
 \end{align*}
 $$
+
 where $k_n$ is the absolutely largest element of $Y^{(n)}$. Then the sequence $k_1, k_2, \cdots, k_n$ converges to the numerically dominant eigenvalues of matrix $A$. The $X^{(n)}$ is the corresponding eigenvector of $\lambda_{n}$.
 
 **Smallest Eigenvalue:** Determined by applying the power method to the **inverse matrix $[A]^{-1}$**; the result is the reciprocal of the smallest eigenvalue and corresponding eigen vector.
