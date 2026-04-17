@@ -9,17 +9,26 @@ Direct methods compute the solution in a finite number of operations. The genera
 This method reduces the system to an **upper triangular form** through forward elimination and then solves for unknowns via **back substitution**.
 *   **Forward Elimination:** The objective is to eliminate $x_1$ from the second to the $n$th equation, then $x_2$ from the third to $n$th, and so on.
     *   **Multiplier formula:** 
-    $
+    $$
+    \begin{align*}
     f_{ik} = \frac{a_{ik}} {a_{kk}}
-    $
+    \end{align*}
+    $$
 
     *   **Row transformation:** 
-    $
-    a_{ij}^{new} = a_{ij} - f_{ik} \cdot a_{kj}$$
+    $$
+    \begin{align*}
+    a_{ij}^{new} = a_{ij} - f_{ik} \cdot a_{kj}
+    \end{align*}
+    $$
+
     and 
-    $
+
+    $$
+    \begin{align*}
     b_i^{new} = b_i - f_{ik} \cdot b_k
-    $
+    \end{align*}
+    $$
 
 *   **Back Substitution:** Once the matrix is triangular, unknowns are solved from the bottom up.
     *   **Formula:** 
@@ -31,28 +40,9 @@ This method reduces the system to an **upper triangular form** through forward e
     x_i = \frac{b_i - \sum_{j=i+1}^n a_{ij}x_j}{a_{ii}}
     $$
 
-```{note}
-**Pivoting Strategies:** "Naive" Gauss elimination fails if a pivot element ($a_{kk}$) is zero. Partial Pivoting involves switching the pivot row with the row below it that contains the largest absolute coefficient in the pivot column to avoid division by zero and minimize round-off errors.
-
-To get a pivot row or column, you typically follow strategies designed to ensure numerical stability and avoid division by zero during processes like Gauss elimination or LU decomposition.
-```
-
-##### **1. Getting the Pivot Row (Partial Pivoting)**
-The goal is to find the **largest absolute value** in the current column to serve as the pivot element.
-
-*   For a system at the $k$th step of elimination, search the current column ($k$) starting from the diagonal element ($a_{kk}$) down to the bottom of the column.
-    *   Identify the element in that column with the largest absolute magnitude. The row containing this element is your new pivot row.
-    *   Switch this identified row with the current row $k$. This ensures that you are dividing by the largest possible number, which minimizes round-off errors and prevents division by zero if the original $a_{kk}$ was zero.
-
-##### **2. Getting the Pivot Row and Column (Complete Pivoting)**
-Complete pivoting is more thorough but rarely used due to its complexity.
-
-*   **How to identify it:** Instead of looking only at the current column, search the **entire remaining submatrix** (all rows and columns that have not yet been used as pivots).
-*   **The Selection Rule:** Find the single largest absolute value in this entire block of numbers.
-*   **The Action:** 
-    1.  Switch the row containing that element with the current row $k$ (to get the **pivot row**).
-    2.  Switch the column containing that element with the current column $k$ (to get the **pivot column**).
-*   **Note:** Switching columns changes the order of your unknowns ($x_1, x_2, \dots$), so you must keep track of these changes to correctly identify the solution at the end.
+>[!Note]
+>**Pivoting Strategies:** "Naive" Gauss elimination fails if a pivot element ($a_{kk}$) is zero. Partial Pivoting involves switching the pivot row with the row below it that contains the largest absolute coefficient in the pivot column to avoid division by zero and minimize round-off errors.
+>To get a pivot row or column, you typically follow strategies designed to ensure numerical stability and avoid division by zero during processes like Gauss elimination or LU decomposition.
 
 
 ##### **Summary Table for Linear Algebra**
@@ -74,40 +64,52 @@ Gauss-Jordan elimination transforms the coefficient matrix into an identity matr
 #### 2.1.3.2 Factorization methods
 Every square matrix $A$ with all non-zero principal minors can be factored uniquely into a lower triangular matrix $L$ and upper triangular matrix $U$ as:
 
-$$[A] = [L][U]$$
+$$
+\begin{align*}
+[A] = [L][U]
+\end{align*}
+$$
 
 **Method:** Consider the system of linear equations:
 
-$$\begin{aligned}
-a_{11} x_1 + a_{12} x_2 + \cdots + a_{1n} x_n &= b_1 \\
-a_{21} x_1 + a_{22} x_2 + \cdots + a_{2n} x_n &= b_2 \\
-\vdots \\
-a_{n1} x_1 + a_{n2} x_2 + \cdots + a_{nn} x_n &= b_n
-\end{aligned}$$
+$$
+    \begin{aligned}
+    a_{11} x_1 + a_{12} x_2 + \cdots + a_{1n} x_n &= b_1 \\
+    a_{21} x_1 + a_{22} x_2 + \cdots + a_{2n} x_n &= b_2 \\
+    \vdots \\
+    a_{n1} x_1 + a_{n2} x_2 + \cdots + a_{nn} x_n &= b_n
+    \end{aligned}
+$$
 
 which can be written as:
 
-$$[A][X] = [B]$$
+$$
+\begin{align*}
+[A][X] = [B]
+\end{align*}
+$$
 where
 
-$$[A] = \begin{bmatrix}
+$
+[A] = \begin{bmatrix}
 a_{11} & a_{12} & \cdots & a_{1n} \\
 a_{21} & a_{22} & \cdots & a_{2n} \\
 \vdots & \vdots & \ddots & \vdots \\
 a_{n1} & a_{n2} & \cdots & a_{nn}
 \end{bmatrix}, \qquad
 [X] = \begin{bmatrix} x_1 \\ x_2 \\ \vdots \\ x_n \end{bmatrix}, \qquad
-[B] = \begin{bmatrix} b_1 \\ b_2 \\ \vdots \\ b_n \end{bmatrix}$$
+[B] = \begin{bmatrix} b_1 \\ b_2 \\ \vdots \\ b_n \end{bmatrix}
+$
 
 Then, if $[A] = [L][U]$, the system can be rewritten as:
 
-$$
+$
 \begin{align}
 ([L][U])[X] &= [B] \\
 [L]([U][X]) &= [B] \\
 [L][V] &= [B]
 \end{align}
-$$
+$
 
 where we define $[V] = [U][X]$.
 
@@ -117,15 +119,18 @@ where we define $[V] = [U][X]$.
 
 **Example:** Consider a $3 \times 3$ system:
     $$
+    \begin{align*}
     [A] = \begin{bmatrix}
             a_{11} & a_{12} & a_{13} \\
             a_{21} & a_{22} & a_{23} \\
             a_{31} & a_{32} & a_{33}
             \end{bmatrix}
+    \end{align*}
     $$
 
 **Do-Little's method:**
     $$
+    \begin{align*}
     [L] = \begin{bmatrix}
             1 & 0 & 0 \\
             l_{21} & 1 & 0 \\
@@ -136,10 +141,12 @@ where we define $[V] = [U][X]$.
             0 & u_{22} & u_{23} \\
             0 & 0 & u_{33}
             \end{bmatrix}
+    \end{align*}
     $$
 
 **Crout's method:**
     $$
+    \begin{align*}
     [L] = \begin{bmatrix}
             l_{11} & 0 & 0 \\
             l_{21} & l_{22} & 0 \\
@@ -150,6 +157,7 @@ where we define $[V] = [U][X]$.
             0 & 1 & u_{23} \\
             0 & 0 & 1
             \end{bmatrix}
+    \end{align*}
     $$
 
 
@@ -169,7 +177,9 @@ $$
 
 **Convergence Criterion:** Convergence is guaranteed if the matrix is **diagonally dominant**:
 $$
+\begin{align*}
 |a_{ii}| > \sum_{j=1, j \neq i}^n |a_{ij}|
+\end{align*}
 $$
 
 #### 2.2.2 Gauss-Seidel Method:
@@ -190,20 +200,29 @@ $$
 
 
 Given a square matrix $A$. Let $X^{(0)}$ be the initial vector so that 
-$$Y^{(1)} =AX^{(0)}$$
+$$
+\begin{align*}
+Y^{(1)} =AX^{(0)}
+\end{align*}
+$$
+
 then, 
 $$
+\begin{align*}
 AX^{(0)} = \lambda_{1} X^{(1)} \\ 
 AX^{(1)} = \lambda_{2} X^{(2)} \\ 
 \vdots \\
 AX^{(n)} = \lambda_{n+1} X^{(n+1)} \\ 
+\end{align*}
 $$
 Which can be written, 
 $$
+\begin{align*}
 X^{(1)} = \frac{1}{k_{1}}Y^{(1)} \\ 
 X^{(2)} = \frac{1}{k_{2}} X^{(2)} \\ 
 \vdots \\
 X^{(n)} = \frac{1}{k_{n}} X^{(n)} \\ 
+\end{align*}
 $$
 where $k_n$ is the absolutely largest element of $Y^{(n)}$. Then the sequence $k_1, k_2, \cdots, k_n$ converges to the numerically dominant eigenvalues of matrix $A$. The $X^{(n)}$ is the corresponding eigenvector of $\lambda_{n}$.
 
