@@ -1,9 +1,5 @@
 # Chapter 1: Solution of Non-Linear Equations
 
-> **Navigation:** [Home](index) | [Chapter 2](ch2) →
-
----
-
 This course module on the **Solution of Non-Linear Equations** covers the fundamental numerical techniques used to find the roots (or zeros) of functions where analytical solutions are difficult or impossible to obtain.
 
 ### **1.1 Errors and Accuracy in Numerical Computations**

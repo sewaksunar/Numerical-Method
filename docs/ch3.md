@@ -1,9 +1,5 @@
 # Chapter 3: Interpolation
 
-> **Navigation:** [← Chapter 2](ch2) | [Home](index)
-
----
-
 ## 3. Introduction
 
 For the given values of function $f(x)$ at points $x_{0}, x_{1}, \cdots, x_{n}$ the process of finding approximate values of the function $f(x)$ for new $x$'s between $x_{0}$ and $x_{n}$ is called interpolation.

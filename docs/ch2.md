@@ -1,9 +1,5 @@
 # Chapter 2: System of Linear Equations
 
-> **Navigation:** [← Chapter 1](ch1) | [Home](index) | [Chapter 3](ch3) →
-
----
-
 This note covers the **Solution of System of Linear Algebraic Equations**, a fundamental area of numerical methods used in engineering to model systems such as structures, electric circuits, and fluid networks.
 
 ### **2.1 Direct Methods**
