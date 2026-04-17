@@ -1,3 +1,9 @@
+# Chapter 2: System of Linear Equations
+
+> **Navigation:** [← Chapter 1](ch1) | [Home](index) | [Chapter 3](ch3) →
+
+---
+
 This note covers the **Solution of System of Linear Algebraic Equations**, a fundamental area of numerical methods used in engineering to model systems such as structures, electric circuits, and fluid networks.
 
 ### **2.1 Direct Methods**
@@ -102,17 +108,23 @@ where
     [B] = \begin{bmatrix} b_1 \\ b_2 \\ \vdots \\ b_n \end{bmatrix}
     $$
 
-Then, $[A] = [L][U]$ also, can be reduced to:
-    $$
-    \begin{align}
-    ([L][U])[X] &= [B] \notag \\
-    [L]([U][X]) &= [B] \notag \\
-    [L][V] &= [B]
-    \end{align}
-    $$
-Where
-Solving (4), from $[V]$ and using it in $(1)$ we get the solution $[X]$.
-    Consider a $3 \times 3$ system,
+Then, if $[A] = [L][U]$, the system can be rewritten as:
+
+$$
+\begin{align}
+([L][U])[X] &= [B] \\
+[L]([U][X]) &= [B] \\
+[L][V] &= [B]
+\end{align}
+$$
+
+where we define $[V] = [U][X]$.
+
+**Solution Steps:**
+1. Solve $[L][V] = [B]$ for $[V]$ (forward substitution)
+2. Solve $[U][X] = [V]$ for $[X]$ (back substitution)
+
+**Example:** Consider a $3 \times 3$ system:
     $$
     \begin{aligned}
     [A] &= \begin{bmatrix}
@@ -120,9 +132,7 @@ Solving (4), from $[V]$ and using it in $(1)$ we get the solution $[X]$.
             a_{21} & a_{22} & a_{23} \\
             a_{31} & a_{32} & a_{33}
             \end{bmatrix} \\
-    \end{aligned}
-    $$
-1. Do-Little’s method:
+1. Do-Little's method:
     $$
     \begin{aligned}
     [L] &= \begin{bmatrix}
@@ -137,11 +147,12 @@ Solving (4), from $[V]$ and using it in $(1)$ we get the solution $[X]$.
             \end{bmatrix}
     \end{aligned}
     $$
+
 2. Crout’s method:
     $$
     \begin{aligned}
     [L] &= \begin{bmatrix}
-            l_{ll} & 0 & 0 \\
+            l_{11} & 0 & 0 \\
             l_{21} & l_{22} & 0 \\
             l_{31} & l_{32} & l_{33}
             \end{bmatrix} ,
